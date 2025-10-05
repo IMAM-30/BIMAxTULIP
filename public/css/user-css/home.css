@@ -1,0 +1,76 @@
+/* Hero */
+.hero {
+    background: url('/images/banjir.jpg') no-repeat center/cover;
+    color: #fff;
+    padding: 100px 20px;
+    text-align: left;
+}
+.hero h1 {
+    font-size: 32px;
+}
+.hero p {
+    margin-top: 10px;
+}
+
+/* Stats */
+.stats {
+    text-align: center;
+    padding: 50px 20px;
+    background: #e74c3c;
+    color: #fff;
+}
+.stats-container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 20px;
+}
+.stat-box {
+    background: #fff;
+    color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    width: 100px;
+}
+
+/* Map Section */
+.map-section {
+    padding: 50px 20px;
+    text-align: center;
+}
+#map {
+    height: 400px;
+    border: 2px solid #333;
+    border-radius: 10px;
+}
+
+/* Report Section */
+.report {
+    background: #ecf0f1;
+    padding: 50px 20px;
+    text-align: center;
+}
+.report .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #27ae60;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+/* Info Section */
+.info {
+    background: #e67e22;
+    color: #fff;
+    padding: 50px 20px;
+    text-align: center;
+}
+.info .tags span {
+    display: inline-block;
+    margin: 5px;
+    padding: 5px 10px;
+    background: #fff;
+    color: #e67e22;
+    border-radius: 5px;
+}
