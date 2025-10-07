@@ -2,15 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Slide;
 use Illuminate\Http\Request;
+use App\Models\Slide;
+use App\Models\Section;
 
 class AdminController extends Controller
 {
     public function index()
     {
-        $slides = Slide::orderBy('date','desc')->get();
-        return view('Admin.admin-home', compact('slides'));
+        // Ambil data slide dan section dari database
+        $slides = Slide::orderBy('date', 'desc')->get();
+        $sections = Section::orderBy('id', 'asc')->get();
+
+        // Kirim ke view admin
+        return view('Admin.admin-home', compact('slides', 'sections'));
     }
 
     public function storeSlide(Request $request)
@@ -22,18 +27,23 @@ class AdminController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
+        // Simpan gambar ke folder public/storage/slides
         $path = $request->file('image')->store('slides', 'public');
-        $validated['image'] = $path;
 
-        Slide::create($validated);
+        // Simpan data ke database
+        Slide::create([
+            'title' => $validated['title'],
+            'subtitle' => $validated['subtitle'],
+            'date' => $validated['date'],
+            'image' => $path,
+        ]);
 
-        return redirect()->route('admin-home')->with('success', 'Slide berhasil ditambahkan!');
+        // Reload halaman admin setelah tambah
+        return redirect('/admin')->with('success', 'Slide berhasil ditambahkan!');
     }
 
-    public function updateSlide(Request $request, $id)
+    public function updateSlide(Request $request, Slide $slide)
     {
-        $slide = Slide::findOrFail($id);
-
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'subtitle' => 'nullable|string|max:255',
@@ -41,20 +51,25 @@ class AdminController extends Controller
             'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
-        if($request->hasFile('image')){
+        // Jika ada upload gambar baru
+        if ($request->hasFile('image')) {
             $path = $request->file('image')->store('slides', 'public');
-            $validated['image'] = $path;
+            $slide->image = $path;
         }
 
-        $slide->update($validated);
+        // Update kolom lainnya
+        $slide->title = $validated['title'];
+        $slide->subtitle = $validated['subtitle'];
+        $slide->date = $validated['date'];
+        $slide->save();
 
-        return redirect()->route('admin-home')->with('success', 'Slide berhasil diperbarui!');
+        // Reload halaman admin setelah update
+        return redirect('/admin')->with('success', 'Slide berhasil diperbarui!');
     }
 
-    public function destroySlide($id)
+    public function destroySlide(Slide $slide)
     {
-        $slide = Slide::findOrFail($id);
         $slide->delete();
-        return redirect()->route('admin-home')->with('success', 'Slide berhasil dihapus!');
+        return redirect('/admin')->with('success', 'Slide berhasil dihapus!');
     }
 }

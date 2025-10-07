@@ -4,6 +4,7 @@
 
 @push('styles')
 <link rel="stylesheet" href="{{ asset('css/user-css/home.css') }}">
+<script src="{{ asset('js/home.js') }}"></script>
 @endpush
 
 @section('content')
@@ -35,20 +36,24 @@
     </section>
 
     {{-- Info Section --}}
-    <section class="info">
-        <h2>Seputar Banjir di Kota Parepare</h2>
-        <div class="tags">
-            <span>Titik Rawan</span>
-            <span>Siaga</span>
-            <span>Faktor</span>
-            <span>Pencegahan</span>
-            <span>Call Center</span>
+    <div id="slider-container">
+        <div id="slides">
+            @foreach($sections as $section)
+            <div class="slide">
+                <img src="{{ asset('storage/'.$section->image) }}" alt="{{ $section->title }}">
+                <h1>{{ $section->subtitle }}</h1>
+                <p>{{ $section->description }}</p>
+            </div>
+            @endforeach
         </div>
-        <p>
-            Titik rawan banjir di Parepare biasanya berada di kawasan rendah dekat sungai, pantai, 
-            atau drainase buruk, sehingga perlu perhatian serius.
-        </p>
-    </section>
+
+        <div class="nav-buttons">
+            @foreach($sections as $index => $section)
+            <button onclick="goToSlide({{ $index }})">{{ $section->title }}</button>
+            @endforeach
+        </div>
+    </div>
+    
 @endsection
 
 @push('scripts')
