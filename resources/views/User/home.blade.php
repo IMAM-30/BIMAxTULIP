@@ -23,10 +23,32 @@
     </section>
 
     {{-- Maps Section --}}
-    <section class="map-section">
-        <h2>Sebaran titik banjir di Kota Parepare</h2>
-        <div id="map"></div>
+    <section id="lokasi" class="lokasi-section">
+    <h2>Lokasi Kami</h2>
+    <div id="map" style="height: 400px;"></div>
     </section>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+        const map = L.map('map').setView([-6.2, 106.8], 11);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap'
+        }).addTo(map);
+
+        const res = await fetch('/api/maps');
+        const locations = await res.json();
+
+        locations.forEach(loc => {
+            const marker = L.marker([loc.latitude, loc.longitude]).addTo(map);
+            marker.bindPopup(`<b>${loc.title}</b><br>${loc.description || ''}`);
+        });
+    });
+    </script>
+
 
     {{-- Pelaporan --}}
     <section class="report">

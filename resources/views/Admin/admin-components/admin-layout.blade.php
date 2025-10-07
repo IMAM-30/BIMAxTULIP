@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ asset('css/components-css/admin-layout.css') }}">
     <link rel="stylesheet" href="{{ asset('css/components-css/admin-navbar.css') }}">
     <link rel="stylesheet" href="{{ asset('css/components-css/admin-footer.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/admin-css/admin-maps.css') }}">
     <link rel="stylesheet" href="{{ asset('css/admin-css/admin-home.css') }}">
     
     <!-- CSS khusus halaman -->

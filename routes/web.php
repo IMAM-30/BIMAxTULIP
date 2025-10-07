@@ -5,6 +5,9 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SectionController;
 
+
+use App\Http\Controllers\MapController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -42,3 +45,21 @@ Route::prefix('admin')->group(function () {
     Route::put('/sections/{id}', [SectionController::class, 'update'])->name('sections.update');
     Route::delete('/sections/{id}', [SectionController::class, 'destroy'])->name('sections.destroy');
 });
+
+
+
+
+//maps
+
+
+Route::prefix('admin')->group(function () {
+    Route::get('/maps', [MapController::class, 'index'])->name('admin.maps');
+    
+    Route::post('/maps', [MapController::class, 'store']);       // Tambah
+    Route::post('/maps/{id}', [MapController::class, 'update']);  // Update via _method=PUT
+    
+    Route::delete('/maps/{id}', [MapController::class, 'destroy']);
+});
+
+
+
