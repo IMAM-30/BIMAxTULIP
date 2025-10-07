@@ -98,43 +98,77 @@ body {
 }
 
 .slide {
+  position: relative;
   min-width: 100%;
   height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
   background-color: #d45b38;
+  overflow: hidden;
 }
 
+/* 🖼️ Gambar (karakter di kiri bawah) */
 .slide img {
-  width: 260px;
+  position: absolute;
+  bottom: 30vh;        /* lebih fleksibel dari 200px */
+  left: 12vw;          /* menyesuaikan lebar layar */
+  width: clamp(150px, 20vw, 260px); /* otomatis mengecil di layar kecil */
   height: auto;
-  margin-bottom: 20px;
 }
 
+/* 🏷️ Judul utama */
 .slide h1 {
-  font-size: 2.2rem;
-  margin-bottom: 10px;
+  position: absolute;
+  top: 40vh;
+  left: 40vw;
+  font-size: clamp(1.8rem, 3vw + 1rem, 2.8rem);
   font-weight: 700;
 }
 
+/* 📄 Deskripsi */
 .slide p {
-  font-size: 1.1rem;
+  position: absolute;
+  top: 48vh;
+  left: 40vw;
+  max-width: 35vw;
   line-height: 1.6;
-  max-width: 600px;
-  margin: 0 auto;
+  font-size: clamp(1rem, 1vw + 0.6rem, 1.2rem);
 }
 
+/* 🔘 Tombol navigasi */
 .nav-buttons {
   position: absolute;
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 600px;
+  left: 650px; /* mulai dari sisi kiri elemen slide */
   display: flex;
+  flex-wrap: nowrap; /* cegah tombol turun ke bawah */
+  align-items: center;
   gap: 15px;
+  transform: none; /* hapus efek tengah */
 }
+
+/* jika tombol nav kamu berupa <button> atau <a> */
+.nav-buttons button,
+.nav-buttons a {
+  white-space: nowrap; /* mencegah teks tombol pindah baris */
+}
+
+
+.nav-buttons button {
+  background-color: #ffffffcc;
+  color: #333;
+  padding: 0.6em 1.2em;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: clamp(0.8rem, 1vw + 0.2rem, 1rem);
+}
+
+.nav-buttons button:hover {
+  background-color: #fff;
+  transform: translateY(-2px);
+}
+
 
 .nav-buttons button {
   background-color: #ffffffcc;
@@ -214,4 +248,46 @@ body {
 
 .nav-btn:hover {
     background-color: #52796F;
+}
+
+
+@media (max-width: 768px) {
+
+  .slide img {
+    bottom: 5vh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40vw;
+  }
+
+  .slide h1 {
+    top: 20vh;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    font-size: 1.8rem;
+  }
+
+  .slide p {
+    top: 32vh;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    max-width: 80%;
+  }
+
+  .nav-buttons {
+    top: auto;
+    bottom: 650px; /* posisikan di bawah jika mau */
+    left: 20px;   /* mulai dari kiri layar */
+    transform: none;
+    justify-content: flex-start; /* mulai dari kiri */
+    padding-right: 20px;
+  }
+
+  .nav-buttons button {
+    font-size: 0.65rem;
+    padding: 8px 14px;
+    flex-shrink: 0; /* biar tidak mengecil otomatis */
+  }
 }
