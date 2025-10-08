@@ -54,12 +54,11 @@ Route::prefix('admin')->group(function () {
 
 Route::prefix('admin')->group(function () {
     Route::get('/maps', [MapController::class, 'index'])->name('admin.maps');
-    
-    Route::post('/maps', [MapController::class, 'store']);       // Tambah
-    Route::post('/maps/{id}', [MapController::class, 'update']);  // Update via _method=PUT
-    
-    Route::delete('/maps/{id}', [MapController::class, 'destroy']);
+    Route::post('/maps', [MapController::class, 'store'])->name('maps.store');
+    Route::put('/maps/{id}', [MapController::class, 'update'])->name('maps.update');
+    Route::delete('/maps/{id}', [MapController::class, 'destroy'])->name('maps.destroy');
 });
+
 
 
 

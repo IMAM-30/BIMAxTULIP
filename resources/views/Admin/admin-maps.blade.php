@@ -64,7 +64,10 @@
         <div id="map" style="height:300px; margin:10px 0; border-radius:8px;"></div>
 
         <div class="button-container">
-            <button type="submit" id="btnSubmit" class="btn btn-primary">Tambah Data</button>
+            {{-- Tombol Simpan Baru --}}
+            <button type="button" id="btnAdd" class="btn btn-success">Simpan Baru</button>
+            {{-- Tombol Edit --}}
+            <button type="submit" id="btnSubmit" class="btn btn-primary" style="display:none;">Simpan Perubahan</button>
             <button type="button" id="btnCancel" class="btn btn-secondary" style="display:none;">Batal</button>
         </div>
     </form>
@@ -106,10 +109,7 @@
                         <td>{{ $map->latitude }}, {{ $map->longitude }}</td>
                         <td>
                             @if($map->gambar)
-                                <img src="{{ asset('storage/'.$map->gambar) }}" 
-                                     alt="gambar" 
-                                     class="table-img"
-                                     style="width:70px;height:70px;object-fit:cover;border-radius:5px;">
+                                <img src="{{ asset('storage/'.$map->gambar) }}" alt="gambar" class="table-img" style="width:70px;height:70px;object-fit:cover;border-radius:5px;">
                             @else
                                 <span>-</span>
                             @endif
