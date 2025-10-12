@@ -26,6 +26,23 @@
     <section id="lokasi" class="lokasi-section">
         <h2>Lokasi Kejadian Banjir</h2>
         <div id="map" style="height: 450px; border-radius: 10px; overflow: hidden;"></div>
+
+            <div id="mapPopupOverlay" class="map-popup-overlay">
+                <div class="map-popup-card">
+                    <button class="popup-close" onclick="closeMapPopup()">×</button>
+                    <img id="popupMapImage" src="" alt="Gambar Lokasi">
+                    <div class="popup-map-info">
+                        <h3 id="popupMapNama"></h3>
+                        <p id="popupMapAlamat"></p>
+                        <p id="popupMapTanggal"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+{{-- Pastikan ini di bawah --}}
+<script src="{{ asset('js/home.js') }}"></script>
+
     </section>
 
     {{-- Leaflet CDN --}}
@@ -66,7 +83,9 @@
                             <div class="popup-date">${new Date(loc.tanggal).toLocaleDateString('id-ID', {
                                 weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
                             })}</div>
+                            <div class="popup-name">${loc.nama_lokasi}</div>
                             <div class="popup-location">${loc.alamat}</div>
+                             <!-- ✅ Pindah ke bawah sini -->
                         </div>
                         <div class="popup-info">
                             <div><span>Ketinggian Air</span>: ${loc.ketinggian_air} cm</div>
@@ -76,6 +95,9 @@
                         </div>
                     </div>
                 `;
+
+
+
                 marker.bindPopup(popupContent);
             });
         } catch (error) {
