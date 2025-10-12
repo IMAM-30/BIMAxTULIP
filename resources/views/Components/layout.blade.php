@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{{ asset('css/components-css/navbar.css') }}">
     <link rel="stylesheet" href="{{ asset('css/components-css/footer.css') }}">
     <link rel="stylesheet" href="{{ asset('css/components-css/hero.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/user-css/map-popup.css') }}">
     
     {{-- CSS khusus per halaman --}}
     @stack('styles')

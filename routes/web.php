@@ -60,5 +60,9 @@ Route::prefix('admin')->group(function () {
 });
 
 
+// API publik untuk ambil data titik banjir
+Route::get('/api/maps', function () {
+    return \App\Models\Map::all();
+});
 
 

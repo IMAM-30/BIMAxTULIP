@@ -1,0 +1,90 @@
+/* ==========================
+   Popup Banjir Parepare (Fix Transparan)
+   ========================== */
+
+.leaflet-popup {
+  background: transparent !important;
+}
+
+.leaflet-popup-content-wrapper {
+  background: rgba(30, 30, 30, 0.597) !important;
+  border-radius: 15px !important;
+  padding: 0 !important;
+  color: #fff !important;
+  font-family: 'Poppins', sans-serif;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.5) !important;
+  overflow: hidden !important;
+
+  border: none !important;
+}
+
+.leaflet-popup-content {
+  background: transparent !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 260px !important;
+}
+
+.popup-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.popup-img-container {
+  position: relative;
+}
+
+.popup-img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.25);
+  filter: brightness(0.9);
+}
+
+.popup-date {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  color: #ffffff;
+  text-shadow: 2px 2px 4px #000;
+}
+
+.popup-location {
+  position: absolute;
+  bottom: 8px;
+  left: 10px;
+  font-size: 13px;
+  color: #fff;
+  font-weight: 600;
+  text-shadow: 2px 2px 4px #000;
+}
+
+
+.popup-info {
+  padding: 10px 14px;
+  font-size: 13px;
+  line-height: 1.6;
+
+}
+
+.popup-info div {
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+}
+
+.popup-info span {
+  font-weight: 600;
+  color: #ffd75f;
+}
+
+.leaflet-popup-tip {
+  background: rgba(30, 30, 30, 0.5) !important;
+  backdrop-filter: blur(8px) !important;
+  border: none !important;
+}
