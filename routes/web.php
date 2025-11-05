@@ -7,6 +7,19 @@ use App\Http\Controllers\SectionController;
 
 
 use App\Http\Controllers\MapController;
+use App\Http\Controllers\Admin\FaqController;
+
+Route::prefix('admin')->group(function () {
+    Route::get('/faq', [FaqController::class, 'index'])->name('faq.index');
+    Route::post('/faq/category', [FaqController::class, 'storeCategory'])->name('faq.category.store');
+    Route::post('/faq/store', [FaqController::class, 'storeFaq'])->name('faq.store');
+    Route::get('/faq/{id}/edit', [FaqController::class, 'edit'])->name('faq.edit');
+    Route::put('/faq/{id}', [FaqController::class, 'updateFaq'])->name('faq.update');
+    Route::put('/faq/category/{id}', [FaqController::class, 'updateCategory'])->name('faq.category.update');
+    Route::delete('/faq/{id}', [FaqController::class, 'destroyFaq'])->name('faq.destroy');
+    Route::delete('/faq/category/{id}', [FaqController::class, 'destroyCategory'])->name('faq.category.destroy');
+});
+
 
 /*
 |--------------------------------------------------------------------------
@@ -21,11 +34,11 @@ use App\Http\Controllers\MapController;
 // ===============================
 Route::get('/', [SectionController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index'])->name('home.index');
-Route::get('/data', fn() => view('User.data'))->name('data');
-Route::get('/maps', fn() => view('User.maps'))->name('maps');
-Route::get('/pelaporan', fn() => view('User.pelaporan'))->name('pelaporan');
-Route::get('/faq', fn() => view('User.faq'))->name('faq');
-Route::get('/kontak', fn() => view('User.kontak'))->name('kontak');
+Route::get('/data', [HomeController::class, 'data'])->name('data');
+Route::get('/maps', [HomeController::class, 'maps'])->name('maps');
+Route::get('/pelaporan', [HomeController::class, 'pelaporan'])->name('pelaporan');
+Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
+Route::get('/kontak', [HomeController::class, 'kontak'])->name('kontak');
 
 // ===============================
 // 🔹 Admin Dashboard & Slide CRUD
@@ -66,3 +79,4 @@ Route::get('/api/maps', function () {
 });
 
 
+Route::get('/faq', [UserController::class, 'faq'])->name('user.faq');

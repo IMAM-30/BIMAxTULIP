@@ -3,7 +3,7 @@
         <div class="footer-col">
             <h3>Peta Situs</h3>
             <ul>
-                <li><a href="{{ url('/') }}">Beranda</a></li>
+                <li><a href="{{ url('/home') }}">Beranda</a></li>
                 <li><a href="{{ url('/data') }}">Data</a></li>
                 <li><a href="{{ url('/maps') }}">Peta</a></li>
                 <li><a href="{{ url('/pelaporan') }}">Pelaporan</a></li>
