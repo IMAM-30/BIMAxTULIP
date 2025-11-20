@@ -11,6 +11,7 @@
             <li><a href="{{ route('admin.websitekontak.index') }}">WebsiteKontak</a></li>
             <li><a href="{{ route('admin.news.index') }}">News</a></li>
             <li><a href="{{ route('admin.monthly-stats.index') }}">Monthly Stats</a></li>
+            <li><a href="{{ route('admin.whatsapp.index') }}">WhatsApp Links</a></li>
             <li><a href="{{ route('admin.kecamatans.index') }}">Kecamatan</a></li>
             <li><a href="#">Settings</a></li>
         </ul>

@@ -21,6 +21,12 @@ use App\Http\Controllers\KontakController;
 use App\Http\Controllers\Admin\KontakController as AdminKontakController;
 use App\Http\Controllers\Admin\KecamatanController as AdminKecamatanController;
 
+use App\Http\Controllers\Admin\WhatsAppController;
+
+
+
+
+
 Route::get('/kontak', [KontakController::class, 'index'])->name('kontak.index');
 
 // Admin group (sesuaikan prefix/middleware jika berbeda di projectmu)
@@ -185,6 +191,15 @@ Route::prefix('admin')->group(function () {
         'update'  => 'admin.kecamatans.update',
         'destroy' => 'admin.kecamatans.destroy',
     ]);
+
+    Route::resource('whatsapp', WhatsAppController::class)->names([
+    'index'   => 'admin.whatsapp.index',
+    'create'  => 'admin.whatsapp.create',
+    'store'   => 'admin.whatsapp.store',
+    'edit'    => 'admin.whatsapp.edit',
+    'update'  => 'admin.whatsapp.update',
+    'destroy' => 'admin.whatsapp.destroy',
+    ])->except(['show']);
 
 });
 
