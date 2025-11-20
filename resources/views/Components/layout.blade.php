@@ -13,6 +13,9 @@
     <link rel="stylesheet" href="{{ asset('css/components-css/footer.css') }}">
     <link rel="stylesheet" href="{{ asset('css/components-css/hero.css') }}">
     <link rel="stylesheet" href="{{ asset('css/user-css/map-popup.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/user-css/whatsapp-bubble.css') }}">
+    
+
     
     {{-- CSS khusus per halaman --}}
     @stack('styles')
@@ -32,7 +35,7 @@
 
     {{-- JS Leaflet --}}
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-
+    <script src="{{ asset('js/whatsapp-bubble.js') }}" defer></script>
     {{-- JS khusus per halaman --}}
 
     @stack('scripts')
