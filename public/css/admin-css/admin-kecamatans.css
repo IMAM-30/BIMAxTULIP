@@ -1,0 +1,78 @@
+/* admin-kecamatans.css - polished admin table */
+body { font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial; color:#111; background:#f6f7f8; }
+
+.container { max-width: 1140px; margin: 28px auto; padding: 0 18px; }
+
+/* page header */
+h2 { font-size: 34px; margin-bottom: 18px; color:#111827; }
+
+/* button */
+a.btn, button.btn {
+  display:inline-block;
+  background:#0b7a63;
+  color:#fff;
+  padding:10px 14px;
+  border-radius:8px;
+  text-decoration:none;
+  font-weight:600;
+  box-shadow: 0 6px 18px rgba(11,122,99,0.12);
+  border: none;
+}
+a.btn:hover { transform: translateY(-2px); }
+
+/* table */
+.table {
+  width:100%;
+  border-collapse: collapse;
+  background:#fff;
+  border-radius:10px;
+  overflow:hidden;
+  box-shadow: 0 8px 28px rgba(12, 20, 28, 0.06);
+}
+.table thead th {
+  background: #f3f6f5;
+  color:#0b3a33;
+  font-weight:700;
+  padding:14px 18px;
+  text-align:left;
+  border-bottom:1px solid rgba(0,0,0,0.04);
+}
+.table tbody td {
+  padding:14px 18px;
+  border-bottom:1px solid rgba(15,20,20,0.03);
+  vertical-align: middle;
+  color:#0f2c26;
+}
+.table tbody tr:last-child td { border-bottom: none; }
+
+/* small actions */
+.actions a {
+  margin-right:10px;
+  color:#0b7a63;
+  text-decoration:underline;
+}
+.actions form { display:inline; }
+
+/* responsive table wrapper */
+.table-responsive {
+  overflow-x:auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* utility */
+.alert { padding:10px 14px; border-radius:8px; margin:10px 0; background:#e6ffef; color:#0b7a63; border:1px solid rgba(11,122,99,0.08); }
+.small { font-size:13px; color:#6b7280; }
+
+/* mobile adjustments */
+@media (max-width:700px){
+  h2 { font-size:24px; }
+  .table thead { display:none; }
+  .table tbody td { display:block; padding:12px; }
+  .table tbody td::before {
+    content: attr(data-label);
+    display:block;
+    font-weight:700;
+    margin-bottom:6px;
+    color:#374151;
+  }
+}

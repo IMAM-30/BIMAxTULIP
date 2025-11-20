@@ -1,0 +1,170 @@
+
+.admin-container {
+    padding: 30px;
+    font-family: "Inter", sans-serif;
+    color: #2f3e46;
+    background: #f8f9fa;
+}
+
+.page-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+    color: #1b4332;
+}
+
+/* =========================
+   Card (Slide & Section)
+========================= */
+.admin-card {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 40px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.admin-card h2 {
+    margin-bottom: 20px;
+    color: #1b4332;
+}
+
+/* =========================
+   Form Add (Slide & Section)
+========================= */
+.add-form, 
+.admin-card form div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.add-form input,
+.add-form textarea,
+.admin-card form input,
+.admin-card form textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    flex: 1;
+}
+
+.add-form textarea,
+.admin-card form textarea {
+    flex-basis: 100%;
+}
+
+.btn-primary,
+.admin-card button {
+    background-color: #52796f;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-primary:hover,
+.admin-card button:hover {
+    background-color: #354f52;
+}
+
+/* =========================
+   Table (Slide & Section)
+========================= */
+.admin-table,
+.admin-card table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.admin-table th,
+.admin-card th {
+    background: #2f3e46;
+    color: white;
+    padding: 12px;
+}
+
+.admin-table td,
+.admin-card td {
+    background: #f1f3f4;
+    padding: 10px 12px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.admin-table tr:nth-child(even) td,
+.admin-card tr:nth-child(even) td {
+    background: #e9ecef;
+}
+
+/* =========================
+   Preview Images
+========================= */
+.preview-img,
+.admin-card img {
+    width: 100px;
+    border-radius: 8px;
+}
+
+/* =========================
+   Buttons Edit / Delete
+========================= */
+.btn-edit {
+    background: #84a98c;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.btn-edit:hover {
+    background: #52796f;
+}
+
+.btn-delete {
+    background: #d9534f;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-delete:hover {
+    background: #c82333;
+}
+
+/* =========================
+   Editable / Form Input
+========================= */
+.form-input,
+.admin-card input[type="text"],
+.admin-card input[type="date"],
+.admin-card textarea,
+.admin-card input[type="file"] {
+    width: 100%;
+    padding: 6px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+/* =========================
+   Success / Alert Messages
+========================= */
+.success-message,
+.alert-success {
+    background: #84a98c;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    font-weight: 500;
+}

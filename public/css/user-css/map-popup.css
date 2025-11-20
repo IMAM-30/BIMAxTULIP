@@ -1,0 +1,230 @@
+/* ==========================
+   Popup Banjir Parepare (Fix Transparan)
+   ========================== */
+
+.leaflet-popup {
+  background: transparent !important;
+}
+
+.leaflet-popup-content-wrapper {
+  background: rgba(30, 30, 30, 0.597) !important;
+  border-radius: 15px !important;
+  padding: 0 !important;
+  color: #fff !important;
+  font-family: 'Poppins', sans-serif;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.5) !important;
+  overflow: hidden !important;
+  border: none !important;
+}
+
+.leaflet-popup-content {
+  background: transparent !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 260px !important;
+}
+
+.popup-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.popup-img-container {
+  position: relative !important; 
+}
+
+.popup-img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.25);
+  filter: brightness(0.9);
+}
+
+.popup-date {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  color: #ffffff;
+  text-shadow: 2px 2px 4px #000;
+}
+
+.popup-name {
+  position: absolute;
+  bottom: 32px; 
+  left: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+}
+
+.popup-location {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  font-size: 12px;
+  color: #ffffff;
+  font-weight: 600;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+}
+
+
+.popup-info {
+  padding: 10px 14px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.popup-info div {
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+}
+
+.popup-info span {
+  font-weight: 600;
+  color: #ffd75f;
+}
+
+.leaflet-popup-tip {
+  background: rgba(30, 30, 30, 0.5) !important;
+  backdrop-filter: blur(8px) !important;
+  border: none !important;
+}
+
+
+
+
+/* ===========================
+   POPUP DETAIL PETA BANJIR
+   =========================== */
+.map-popup-overlay {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 9999;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    overflow-y: auto; 
+}
+
+.map-popup-overlay.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Kartu popup */
+.map-popup-card {
+    position: relative;
+    background: #fff;
+    border-radius: 18px;
+    padding: 20px;
+    max-width: 700px;
+    width: 90%;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: zoomIn 0.3s ease;
+    max-height: 90vh; 
+    overflow-y: auto; 
+}
+
+/* Gambar utama */
+.map-popup-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    object-fit: contain;
+}
+
+/* Tombol close */
+.popup-close {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    background: #ff5c5c;
+    border: none;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 38px;
+    height: 38px;
+    line-height: 30px;
+    text-align: center;
+    transition: background 0.2s ease;
+    z-index: 10;
+}
+
+.popup-close:hover {
+    background: #ff1c1c;
+}
+
+/* Info lokasi */
+.popup-map-info {
+    text-align: center;
+    color: #333;
+}
+
+.popup-map-info h3 {
+    font-size: 1.4em;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.popup-map-info p {
+    font-size: 1em;
+    margin: 3px 0;
+    color: #555;
+}
+
+/* Animasi muncul */
+@keyframes zoomIn {
+    from {
+        transform: scale(0.85);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+    .map-popup-card {
+        width: 95%;
+        padding: 15px;
+        border-radius: 14px;
+        max-height: 85vh;
+    }
+
+    .popup-close {
+        top: 6px;
+        right: 8px;
+        width: 32px;
+        height: 32px;
+        font-size: 20px;
+    }
+
+    .popup-map-info h3 {
+        font-size: 1.1em;
+    }
+
+    .popup-map-info p {
+        font-size: 0.9em;
+    }
+}

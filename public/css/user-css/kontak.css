@@ -1,0 +1,28 @@
+
+
+.kontak-section {
+    padding: 60px 0;
+    background: #fff;
+}
+.kontak-section .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+.kontak-section-title { text-align:center; font-size:28px; margin-bottom:30px; color:#1f6f77; }
+
+.kontak-grid { display:flex; flex-direction:column; gap:20px; }
+
+.kontak-row { display:flex; gap:20px; justify-content:space-between; flex-wrap:wrap; }
+
+.kontak-card {
+    background:#fff;
+    border-radius:10px;
+    padding:20px;
+    box-shadow:0 6px 18px rgba(0,0,0,0.06);
+    flex:1 1 calc(33.333% - 13.333px);
+    min-width:220px;
+}
+.kontak-card.empty { background:transparent; box-shadow:none; }
+.kontak-title { font-size:18px; margin-bottom:8px; color:#0e5960; }
+.kontak-desc { font-size:14px; color:#666; line-height:1.4; margin-bottom:12px; }
+.kontak-link { display:inline-block; font-size:14px; color:#1f9aa0; text-decoration:underline; }
+@media (max-width: 900px) {
+    .kontak-card { flex:1 1 100%; }
+}
