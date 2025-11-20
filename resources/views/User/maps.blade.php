@@ -1,6 +1,6 @@
 @extends('Components.layout')
 
-@section('title', 'Beranda')
+@section('title', 'MAPS Laporan Banjir')
 
 @push('styles')
 <link rel="stylesheet" href="{{ asset('css/user-css/home.css') }}">
@@ -40,6 +40,8 @@
             </div>
         </section>
     </section>
+
+<script src="{{ asset('js/maps.js') }}"></script>
 
     {{-- Leaflet CDN --}}
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />

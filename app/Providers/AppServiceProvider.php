@@ -8,17 +8,13 @@ use App\Models\Section;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     */
+
     public function register(): void
     {
         //
     }
 
-    /**
-     * Bootstrap any application services.
-     */
+
         public function boot()
     {
         View::composer('Components.navbar', function ($view) {

@@ -14,7 +14,7 @@
 <div class="success-message">{{ session('success') }}</div>
 @endif
 
-{{-- ================= SLIDE ================= --}}
+{{-- SLIDE --}}
 <section class="admin-card">
     <h2>Kelola Slide</h2>
 
@@ -69,7 +69,7 @@
     </table>
 </section>
 
-{{-- ================= SECTION ================= --}}
+{{-- SECTION--}}
 <section class="admin-card">
     <h2>Kelola Section</h2>
 
@@ -120,7 +120,7 @@
     </table>
 </section>
 
-{{-- ================= JAVASCRIPT ================= --}}
+{{--JAVASCRIPT --}}
 <script>
     // Fungsi edit Section
     function editRowSection(id) {

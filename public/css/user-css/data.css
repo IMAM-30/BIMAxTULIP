@@ -1,0 +1,16 @@
+
+.year-select {
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 15px;
+    border: 1px solid #1b4d3e;
+    background: #e6fff3;
+    color: #1b4d3e;
+    cursor: pointer;
+}
+
+
+.monthly-stats-section { padding: 48px 0 40px; background: linear-gradient(180deg,#6b5fa0 0,#7d61a7 100%); color:#fff; border-radius:8px; margin-bottom:30px; }
+.monthly-stats-section .container { max-width:1100px; margin: 18px auto; padding: 24px; }
+.monthly-stats-section .news-title { color: #fff; text-align:center; font-size:24px; }
+#monthlyStatsChart { background: rgba(0,0,0,0.35); border-radius:8px; padding:12px; display:block; width:100%; height:260px; }

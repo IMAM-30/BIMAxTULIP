@@ -31,7 +31,7 @@
 }
 
 .popup-img-container {
-  position: relative !important; /* ✅ tambahan penting agar nama lokasi tetap di dalam gambar */
+  position: relative !important; 
 }
 
 .popup-img {
@@ -55,7 +55,7 @@
 
 .popup-name {
   position: absolute;
-  bottom: 32px; /* sedikit di atas alamat */
+  bottom: 32px; 
   left: 10px;
   font-size: 13px;
   font-weight: 700;
@@ -115,7 +115,7 @@
     visibility: hidden;
     opacity: 0;
     transition: opacity 0.3s ease, visibility 0.3s ease;
-    overflow-y: auto; /* agar bisa scroll kalau isi panjang */
+    overflow-y: auto; 
 }
 
 .map-popup-overlay.active {
@@ -136,8 +136,8 @@
     flex-direction: column;
     align-items: center;
     animation: zoomIn 0.3s ease;
-    max-height: 90vh; /* agar tidak melewati layar */
-    overflow-y: auto; /* scroll isi jika terlalu tinggi */
+    max-height: 90vh; 
+    overflow-y: auto; 
 }
 
 /* Gambar utama */

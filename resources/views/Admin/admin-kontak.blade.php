@@ -1,4 +1,4 @@
-{{-- ================= SECTION SECTION ================= --}}
+{{--SECTION SECTION--}}
 <section class="admin-card">
     <h2>Kelola Section</h2>
 

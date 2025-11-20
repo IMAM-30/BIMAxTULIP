@@ -1,0 +1,142 @@
+/* Layout wrapper */
+.kecamatan-section {
+  padding: 56px 0;
+  background: linear-gradient(180deg, rgba(16,24,32,0.04) 0%, rgba(255,255,255,0.00) 100%);
+}
+.kecamatan-section .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Title */
+.kecamatan-title {
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  font-weight: 700;
+  font-size: 30px;
+  color: #0b2e2a;         
+  text-align: center;
+  margin-bottom: 28px;
+  letter-spacing: -0.2px;
+}
+
+/* Grid */
+.kecamatan-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+  align-items: stretch;
+}
+
+/* Card */
+.kec-box {
+  background: linear-gradient(180deg, #ffffff 0%, #fbfffb 100%);
+  border-radius: 14px;
+  padding: 26px 20px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(8, 30, 25, 0.06);
+  border: 1px solid rgba(11, 47, 40, 0.04);
+  transition: transform .26s cubic-bezier(.2,.9,.3,1), box-shadow .26s ease, border-color .26s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 150px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hover / focus */
+.kec-box:hover,
+.kec-box:focus-within {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 44px rgba(8, 30, 25, 0.12);
+  border-color: rgba(6, 120, 95, 0.14);
+}
+
+/* Accent ribbon (optional small decorative corner) */
+.kec-box::after {
+  content: "";
+  position: absolute;
+  right: -40px;
+  top: -40px;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle at 30% 30%, rgba(3,77,55,0.04), rgba(255,255,255,0));
+  transform: rotate(25deg);
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+/* Count badge */
+.kec-count {
+  display: inline-grid;
+  place-items: center;
+  width: 84px;
+  height: 84px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #16a085 0%, #2ecc71 100%);
+  color: #fff;
+  font-size: 28px;
+  font-weight: 800;
+  box-shadow: 0 6px 18px rgba(30, 115, 86, 0.18);
+  margin-bottom: 12px;
+  transition: transform .22s ease;
+}
+
+/* Slight pop on hover */
+.kec-box:hover .kec-count { transform: translateY(-6px) scale(1.03); }
+
+/* Name */
+.kec-name {
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  font-size: 18px;
+  color: #0b2e2a;
+  font-weight: 600;
+  margin-top: 4px;
+  letter-spacing: 0.1px;
+}
+
+/* Secondary small label (if you want to show 'kecamatan' etc.) */
+.kec-sub {
+  font-size: 13px;
+  color: rgba(11,46,40,0.6);
+  margin-top: 6px;
+}
+
+/* Accessible focus for keyboard users */
+.kec-box:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(6,120,95,0.12), 0 20px 44px rgba(8,30,25,0.12);
+}
+
+/* RESPONSIVE: adapt columns */
+@media (max-width:1100px) {
+  .kecamatan-grid { grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .kec-count { width: 76px; height: 76px; font-size: 24px; }
+}
+@media (max-width:820px) {
+  .kecamatan-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .kecamatan-title { font-size: 26px; }
+}
+@media (max-width:520px) {
+  .kecamatan-grid { grid-template-columns: 1fr; gap: 14px; }
+  .kec-box { padding: 20px; min-height: 120px; }
+  .kec-count { width: 64px; height: 64px; font-size: 20px; }
+  .kecamatan-title { font-size: 22px; }
+}
+
+/* Utilities: center inside a narrower container (if needed) */
+.kecamatan-section .container.narrow {
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* DARK BACKGROUND VARIANT — if your home header uses dark bg, this helps */
+.kecamatan-section.dark .kec-box {
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+  border: 1px solid rgba(255,255,255,0.04);
+}
+.kecamatan-section.dark .kecamatan-title { color: #ffffff; }
+.kecamatan-section.dark .kec-name { color: rgba(255,255,255,0.92); }

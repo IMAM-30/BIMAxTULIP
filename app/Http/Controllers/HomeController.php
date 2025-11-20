@@ -3,28 +3,42 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\News;
 use App\Models\Section;
 use App\Models\Slide;
 use App\Models\FaqCategory;
-
+use App\Models\MonthlyStat;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        // Ambil data dari database
         $sections = Section::orderBy('id', 'asc')->get();
         $slides = Slide::orderBy('date', 'desc')->get();
-
-        // Kirim ke view
-        return view('User.home', compact('sections', 'slides'));
+        $kecamatans = \App\Models\Kecamatan::orderBy('order')->get();
+        return view('User.home', compact('sections', 'slides', 'kecamatans'));
     }
 
     public function data()
     {
-        $slides = Slide::all();
-        return view('User.data', compact('slides'));
+        $slides = Slide::orderByDesc('created_at')->get();
+
+        $news = News::orderBy('order', 'asc')
+                    ->orderByDesc('published_at')
+                    ->paginate(9);
+
+        $availableYears = \App\Models\MonthlyStat::select('year')
+                            ->distinct()
+                            ->orderByDesc('year')
+                            ->pluck('year');
+
+        $year = (int) request('year', ($availableYears->first() ?? date('Y')));
+
+        $monthlyStats = \App\Models\MonthlyStat::where('year', $year)->orderBy('month')->get();
+
+        return view('User.data', compact('slides', 'news', 'monthlyStats', 'availableYears', 'year'));
     }
+
 
     public function maps()
     {
@@ -47,10 +61,19 @@ class HomeController extends Controller
     }
 
 
-    public function kontak()
+     public function kontak()
+    {
+        
+        $kontaks = Kontak::orderBy('order')->get();
+
+        $slides = \App\Models\Slide::all(); 
+        return view('User.kontak', compact('kontaks', 'slides'));
+    }
+    
+    public function sistemcerdas()
     {
         $slides = Slide::all();
-        return view('User.kontak', compact('slides'));
+        return view('User.sistemcerdas', compact('slides'));
     }
 
     

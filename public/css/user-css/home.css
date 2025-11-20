@@ -1,7 +1,3 @@
-/* =========================================================
-   🌊 HOME PAGE STYLE (FINAL & RAPIH)
-   ========================================================= */
-
 /* ===== HERO ===== */
 .hero {
   background: url('/images/banjir.jpg') no-repeat center/cover;
@@ -86,9 +82,9 @@
   border-radius: 5px;
 }
 
-/* =========================================================
-   🎞️ SLIDER UTAMA
-   ========================================================= */
+/* 
+   SLIDER UTAMA
+    */
 body {
   margin: 0;
   font-family: "Inter", sans-serif;
@@ -146,18 +142,18 @@ body {
   font-size: clamp(1rem, 1vw + 0.6rem, 1.2rem);
 }
 
-/* =========================================================
-   🔘 TOMBOL NAVIGASI SLIDER
-   ========================================================= */
+/* 
+  TOMBOL NAVIGASI SLIDER
+   */
 
 /* === Desktop === */
 .nav-buttons {
   position: relative;
   display: flex;
-  justify-content: flex-start; /* mulai dari kiri */
+  justify-content: flex-start; 
   padding-left: 12vw;
   overflow-x: auto;
-  flex-wrap: nowrap; /* cegah turun ke baris baru */
+  flex-wrap: nowrap; 
   gap: 20px;
   padding: 0 530px;
   bottom: 550px;
@@ -190,9 +186,9 @@ body {
   font-weight: bold;
 }
 
-/* =========================================================
-   📱 RESPONSIVE (MAX-WIDTH: 768px)
-   ========================================================= */
+/* 
+   RESPONSIVE (MAX-WIDTH: 768px)
+    */
 @media (max-width: 768px) {
   .slide img {
     bottom: 10vh;
@@ -218,7 +214,7 @@ body {
 
   .nav-buttons {
     bottom: 550px;
-    justify-content: center; /* tombol di tengah */
+    justify-content: center; 
     overflow-x: auto;
     flex-wrap: nowrap;
     gap: 10px;

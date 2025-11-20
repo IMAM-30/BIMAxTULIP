@@ -67,7 +67,6 @@ class FaqController extends Controller
 
         $faq->update($data);
 
-        // Return JSON agar fetch JS berhasil
         return response()->json([
             'success' => true,
             'faq' => $faq
@@ -81,7 +80,7 @@ class FaqController extends Controller
     $category = FaqCategory::findOrFail($id);
     $category->update(['name' => $request->name]);
 
-    // ✅ Return JSON agar fetch JS sukses
+
     return response()->json([
         'success' => true,
         'category' => $category

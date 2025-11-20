@@ -9,7 +9,6 @@ class Section extends Model
 {
     use HasFactory;
 
-    // Sesuaikan dengan kolom di database
     protected $fillable = [
         'title',
         'subtitle',

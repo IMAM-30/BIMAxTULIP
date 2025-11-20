@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{{ asset('css/components-css/admin-footer.css') }}">
         <link rel="stylesheet" href="{{ asset('css/admin-css/admin-maps.css') }}">
     <link rel="stylesheet" href="{{ asset('css/admin-css/admin-home.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/admin-css/admin-kecamatans.css') }}">
     
     <!-- CSS khusus halaman -->
     @yield('custom-css')

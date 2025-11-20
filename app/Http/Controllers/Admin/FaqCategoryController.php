@@ -27,7 +27,6 @@ class FaqCategoryController extends Controller
         return back()->with('success', 'Kategori dihapus');
     }
 
-    // ====== AJAX INLINE UPDATE ======
     public function updateCategory(Request $request, $id)
     {
         $request->validate(['name' => 'required']);

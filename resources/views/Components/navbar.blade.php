@@ -8,6 +8,7 @@
             <li><a href="{{ url('/pelaporan') }}">Pelaporan</a></li>
             <li><a href="{{ url('/faq') }}">FAQ</a></li>
             <li><a href="{{ url('/kontak') }}">Kontak</a></li>
+            <li><a href="{{ url('/sistemcerdas') }}">Sistem Cerdas</a></li>
         </ul>
         
     </div>

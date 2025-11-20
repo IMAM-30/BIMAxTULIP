@@ -31,13 +31,12 @@ class SectionController extends Controller
         'image'       => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
     ]);
 
-    // Simpan gambar jika ada
     $path = $request->file('image') ? $request->file('image')->store('sections', 'public') : null;
 
     Section::create([
         'title'       => $request->title,
         'subtitle'    => $request->subtitle ?? '',
-        'description' => $request->description, // pastikan selalu ada
+        'description' => $request->description, 
         'image'       => $path,
     ]);
 
@@ -57,7 +56,6 @@ class SectionController extends Controller
     ]);
 
     if ($request->hasFile('image')) {
-        // Hapus gambar lama jika ada
         if ($section->image && Storage::disk('public')->exists($section->image)) {
             Storage::disk('public')->delete($section->image);
         }
@@ -79,7 +77,6 @@ class SectionController extends Controller
     {
         $section = Section::findOrFail($id);
 
-        // Hapus file image jika ada
         if ($section->image && Storage::disk('public')->exists($section->image)) {
             Storage::disk('public')->delete($section->image);
         }
