@@ -14,6 +14,7 @@
     @include('components.kecamatan-section', ['kecamatans' => $kecamatans])
     @include('components.whatsapp-bubble')
     {{-- Maps Section --}}
+    
     <section id="lokasi" class="lokasi-section">
         <h2>Lokasi Kejadian Banjir</h2>
         <div id="map" style="height: 450px; border-radius: 10px; overflow: hidden;"></div>

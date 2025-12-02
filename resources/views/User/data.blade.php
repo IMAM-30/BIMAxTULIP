@@ -70,7 +70,9 @@
                 @forelse($news as $index => $item)
                     @php $globalIndex = $startIndex + $index; @endphp
 
-                    <article class="news-item" data-index="{{ $globalIndex }}">
+                    <article class="news-item"
+                            data-index="{{ $globalIndex }}"
+                            style="{{ $index >= 3 ? 'display:none;' : '' }}">
                         <div class="news-body">
                             <div class="news-meta">
                                 <span class="news-date">
@@ -111,10 +113,15 @@
                 @endforelse
             </div>
 
+
             {{-- Pagination (Laravel) --}}
             <div class="news-footer" style="margin-top:18px;">
+                <button id="btnLoadMore" class="btn-load-more">
+                    Load More
+                </button>
+
                 @if(isset($news) && method_exists($news, 'links'))
-                    <div class="pagination-wrapper">
+                    <div class="pagination-wrapper" style="margin-top:10px;">
                         {{ $news->links() }}
                     </div>
                 @endif
@@ -126,6 +133,7 @@
 @push('scripts')
 <script src="{{ asset('js/hero.js') }}" defer></script>
 <script src="{{ asset('js/news.js') }}" defer></script> <!-- untuk tombol More, modal gambar, dsb -->
+<script src="{{ asset('js/news-loadmore.js') }}" defer></script>
 <!-- Chart.js CDN -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -162,17 +170,6 @@ document.addEventListener('DOMContentLoaded', function(){
             }
         });
     }
-
-    // small enhancement: collapse/expand "More" per item (news.js may already do this; keep safe fallback)
-    document.querySelectorAll('.btn-more').forEach(btn => {
-        btn.addEventListener('click', function () {
-            const article = this.closest('.news-item');
-            if (!article) return;
-            const expanded = article.classList.toggle('expanded');
-            this.setAttribute('aria-expanded', expanded ? 'true' : 'false');
-            if (expanded) article.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        });
-    });
 });
 </script>
 @endpush

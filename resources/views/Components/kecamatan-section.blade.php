@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="{{ asset('css/user-css/kecamatans.css') }}">
 <section class="kecamatan-section">
     <div class="container">
-        <h2 class="kecamatan-title">MAPS Laporan Banjir di setiap Kecamatan Kota Parepare {{ date('Y') }}</h2>
+        <h2 class="kecamatan-title">Laporan Banjir di setiap Kecamatan Kota Parepare {{ date('Y') }}</h2>
 
         <div class="kecamatan-grid">
             @foreach($kecamatans->take(4) as $k)
