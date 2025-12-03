@@ -1,10 +1,13 @@
-@extends('Components.layout')
+@extends('components.layout')
 
 @section('title', 'Beranda')
 
 @push('styles')
 <link rel="stylesheet" href="{{ asset('css/user-css/home.css') }}">
+<link rel="stylesheet" href="{{ asset('css/user-css/home-laporan.css') }}">
+<link rel="stylesheet" href="{{ asset('css/user-css/home-section.css') }}">
 <link rel="stylesheet" href="{{ asset('css/user-css/map-popup.css') }}">
+
 @endpush
 
 @section('content')
@@ -15,27 +18,31 @@
     @include('components.whatsapp-bubble')
     {{-- Maps Section --}}
     
-    <section id="lokasi" class="lokasi-section">
-        <h2>Lokasi Kejadian Banjir</h2>
+    <section id="lokasi" class="lokasi-section reveal animate-bounce">
+        <h2 class="reveal">
+            SEBARAN LAPORAN BANJIR <br>
+            KOTA PAREPARE
+        </h2>
+
+
         <div id="map" style="height: 450px; border-radius: 10px; overflow: hidden;"></div>
 
-            <div id="mapPopupOverlay" class="map-popup-overlay">
-                <div class="map-popup-card">
-                    <button class="popup-close" onclick="closeMapPopup()">×</button>
-                    <img id="popupMapImage" src="" alt="Gambar Lokasi">
-                    <div class="popup-map-info">
-                        <h3 id="popupMapNama"></h3>
-                        <p id="popupMapAlamat"></p>
-                        <p id="popupMapTanggal"></p>
-                    </div>
+        <div id="mapPopupOverlay" class="map-popup-overlay">
+            <div class="map-popup-card">
+                <button class="popup-close" onclick="closeMapPopup()">×</button>
+                <img id="popupMapImage" src="" alt="Gambar Lokasi">
+                <div class="popup-map-info">
+                    <h3 id="popupMapNama"></h3>
+                    <p id="popupMapAlamat"></p>
+                    <p id="popupMapTanggal"></p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
+
 
 
 <script src="{{ asset('js/home.js') }}"></script>
-<script src="{{ asset('js/maps.js') }}"></script>
-
     </section>
 
     {{-- Leaflet CDN --}}
@@ -100,30 +107,58 @@
     </script>
 
     {{-- Pelaporan --}}
-    <section class="report">
-        <h2>Lapor di mana?</h2>
-        <p>BNPB Kota Parepare telah menyiapkan layanan pengaduan banjir melalui sistem kami.</p>
-        <a href="{{ url('/pelaporan') }}" class="btn">Laporkan Sekarang</a>
+    <section class="report-section reveal">
+        <div class="report-inner">
+            <div class="report-image">
+                <img src="{{ asset('images/sections/naruto.png') }}" alt="Ilustrasi pelaporan banjir">
+
+            </div>
+
+            <div class="report-content reveal">
+                <h2>Laporin di mana ?</h2>
+                <p>
+                    Saat ini BNPB Kota Parepare telah menyediakan layanan pengaduan banjir
+                    yang tersalur langsung dengan kami dan akan di data secara terstruktur.
+                </p>
+
+                <a href="{{ url('/pelaporan') }}" class="report-btn">
+                    Laporkan sekarang
+                </a>
+            </div>
+        </div>
     </section>
 
+
+
     {{-- Info Section --}}
-    <div id="slider-container">
-        <div id="slides">
-            @foreach($sections as $section)
-            <div class="slide">
-                <img src="{{ asset('storage/'.$section->image) }}" alt="{{ $section->title }}">
-                <h1>{{ $section->subtitle }}</h1>
-                <p>{{ $section->description }}</p>
-            </div>
+    <div id="slider-container" class="info-slider-section reveal">
+        {{-- Nav tombol di atas konten --}}
+        <div class="nav-buttons">
+            @foreach($sections as $index => $section)
+                <button onclick="goToSlide({{ $index }})">
+                    {{ $section->title }}
+                </button>
             @endforeach
         </div>
 
-        <div class="nav-buttons">
-            @foreach($sections as $index => $section)
-            <button onclick="goToSlide({{ $index }})">{{ $section->title }}</button>
+        {{-- Slide konten --}}
+        <div id="slides">
+            @foreach($sections as $section)
+                <div class="slide">
+                    <div class="slide-image">
+                        <img src="{{ asset('storage/'.$section->image) }}" alt="{{ $section->title }}">
+                    </div>
+                    <div class="slide-text">
+                        <h1>{{ $section->subtitle }}</h1>
+                        <p>{{ $section->description }}</p>
+                    </div>
+                </div>
             @endforeach
         </div>
     </div>
+
+
+
 
     <script src="{{ asset('js/home.js') }}"></script>
 

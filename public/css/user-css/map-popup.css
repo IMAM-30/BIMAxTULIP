@@ -1,230 +1,294 @@
-/* ==========================
-   Popup Banjir Parepare (Fix Transparan)
-   ========================== */
-
 .leaflet-popup {
   background: transparent !important;
+  border: none !important;
 }
 
 .leaflet-popup-content-wrapper {
-  background: rgba(30, 30, 30, 0.597) !important;
-  border-radius: 15px !important;
+  background: rgba(15, 23, 42, 0.92) !important;
+  border-radius: 18px !important;
   padding: 0 !important;
-  color: #fff !important;
-  font-family: 'Poppins', sans-serif;
-  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.5) !important;
+  color: #e5e7eb !important;
+  font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.75) !important;
   overflow: hidden !important;
+  border: 1px solid rgba(148, 163, 184, 0.55) !important;
+  animation: popupBounceIn 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.leaflet-popup-tip {
+  background: rgba(15, 23, 42, 0.92) !important;
+  backdrop-filter: blur(8px) !important;
   border: none !important;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.7) !important;
 }
 
 .leaflet-popup-content {
   background: transparent !important;
   margin: 0 !important;
   padding: 0 !important;
-  width: 260px !important;
+  width: 270px !important;
 }
 
 .popup-card {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  border-radius: 18px;
+  cursor: pointer; 
 }
 
 .popup-img-container {
-  position: relative !important; 
+  position: relative !important;
+  overflow: hidden;
 }
 
 .popup-img {
   width: 100%;
   height: 150px;
   object-fit: cover;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.25);
-  filter: brightness(0.9);
+  display: block;
+  filter: brightness(0.95);
 }
 
 .popup-date {
   position: absolute;
   top: 10px;
   left: 10px;
-  font-size: 12px;
-  padding: 4px 8px;
-  border-radius: 6px;
-  color: #ffffff;
-  text-shadow: 2px 2px 4px #000;
+  font-size: 11px;
+  padding: 4px 9px;
+  border-radius: 999px;
+  color: #e5e7eb;
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
 }
 
 .popup-name {
   position: absolute;
-  bottom: 32px; 
-  left: 10px;
-  font-size: 13px;
+  bottom: 32px;
+  left: 12px;
+  right: 12px;
+  font-size: 14px;
   font-weight: 700;
-  color: #fff;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+  color: #f9fafb;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
 }
 
 .popup-location {
   position: absolute;
   bottom: 10px;
-  left: 10px;
+  left: 12px;
+  right: 12px;
   font-size: 12px;
-  color: #ffffff;
-  font-weight: 600;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+  color: #e5e7eb;
+  font-weight: 500;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.85);
 }
 
-
 .popup-info {
-  padding: 10px 14px;
-  font-size: 13px;
+  padding: 10px 14px 12px;
+  font-size: 12px;
   line-height: 1.6;
+  border-top: 1px solid rgba(51, 65, 85, 0.85);
+  background: radial-gradient(circle at 0% 0%, rgba(59, 130, 246, 0.22), transparent 55%);
 }
 
 .popup-info div {
   display: flex;
   justify-content: space-between;
-  color: #fff;
+  align-items: baseline;
+  color: #e5e7eb;
+  gap: 8px;
 }
 
 .popup-info span {
   font-weight: 600;
-  color: #ffd75f;
-}
-
-.leaflet-popup-tip {
-  background: rgba(30, 30, 30, 0.5) !important;
-  backdrop-filter: blur(8px) !important;
-  border: none !important;
+  color: #fde68a;
 }
 
 
-
-
-/* ===========================
-   POPUP DETAIL PETA BANJIR
-   =========================== */
-.map-popup-overlay {
-    position: fixed;
-    inset: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(4px);
-    z-index: 9999;
-    visibility: hidden;
+@keyframes popupBounceIn {
+  0% {
+    transform: translateY(12px) scale(0.92);
     opacity: 0;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-    overflow-y: auto; 
+  }
+  60% {
+    transform: translateY(-4px) scale(1.02);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes markerDropIn {
+  0% {
+    transform: translateY(-14px) scale(0.9);
+    opacity: 0;
+  }
+  70% {
+    transform: translateY(3px) scale(1.03);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.leaflet-marker-icon {
+  animation: markerDropIn 0.45s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transform-origin: bottom center;
+}
+
+
+.map-popup-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(6px);
+  z-index: 9999;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+  overflow-y: auto;
 }
 
 .map-popup-overlay.active {
-    visibility: visible;
-    opacity: 1;
+  visibility: visible;
+  opacity: 1;
 }
 
-/* Kartu popup */
 .map-popup-card {
-    position: relative;
-    background: #fff;
-    border-radius: 18px;
-    padding: 20px;
-    max-width: 700px;
-    width: 90%;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    animation: zoomIn 0.3s ease;
-    max-height: 90vh; 
-    overflow-y: auto; 
+  position: relative;
+  background: #0b1120;
+  border-radius: 20px;
+  padding: 22px 20px 20px;
+  max-width: 720px;
+  width: 90%;
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.9);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: zoomIn 0.28s ease-out;
+  max-height: 85vh;
+  overflow-y: auto;
+  border: 1px solid rgba(148, 163, 184, 0.6);
 }
 
-/* Gambar utama */
 .map-popup-card img {
-    width: 100%;
-    height: auto;
-    border-radius: 12px;
-    margin-bottom: 15px;
-    object-fit: contain;
+  width: 100%;
+  max-height: 60vh;      
+  object-fit: contain;  
+  border-radius: 14px;
+  margin-bottom: 16px;
+  background: #020617;
 }
 
-/* Tombol close */
 .popup-close {
-    position: absolute;
-    top: 10px;
-    right: 12px;
-    background: #ff5c5c;
-    border: none;
-    color: white;
-    font-size: 24px;
-    font-weight: bold;
-    border-radius: 50%;
-    cursor: pointer;
-    width: 38px;
-    height: 38px;
-    line-height: 30px;
-    text-align: center;
-    transition: background 0.2s ease;
-    z-index: 10;
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: #ef4444;
+  border: none;
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+  border-radius: 999px;
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  line-height: 30px;
+  text-align: center;
+  transition: background 0.18s ease, transform 0.12s ease;
+  z-index: 10;
+  box-shadow: 0 10px 25px rgba(239, 68, 68, 0.6);
 }
 
 .popup-close:hover {
-    background: #ff1c1c;
+  background: #dc2626;
+  transform: translateY(-1px) scale(1.02);
 }
 
-/* Info lokasi */
 .popup-map-info {
-    text-align: center;
-    color: #333;
+  text-align: center;
+  color: #e5e7eb;
 }
 
 .popup-map-info h3 {
-    font-size: 1.4em;
-    font-weight: bold;
-    margin-bottom: 6px;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 6px;
 }
 
 .popup-map-info p {
-    font-size: 1em;
-    margin: 3px 0;
-    color: #555;
+  font-size: 0.98rem;
+  margin: 3px 0;
+  color: #cbd5f5;
 }
 
-/* Animasi muncul */
 @keyframes zoomIn {
-    from {
-        transform: scale(0.85);
-        opacity: 0;
-    }
-    to {
-        transform: scale(1);
-        opacity: 1;
-    }
+  from {
+    transform: scale(0.9) translateY(8px);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
 }
 
-/* RESPONSIVE */
+
 @media (max-width: 600px) {
-    .map-popup-card {
-        width: 95%;
-        padding: 15px;
-        border-radius: 14px;
-        max-height: 85vh;
-    }
+  .leaflet-popup-content {
+    width: 240px !important;
+  }
 
-    .popup-close {
-        top: 6px;
-        right: 8px;
-        width: 32px;
-        height: 32px;
-        font-size: 20px;
-    }
+  .popup-img {
+    height: 135px;
+  }
 
-    .popup-map-info h3 {
-        font-size: 1.1em;
-    }
+  .popup-name {
+    font-size: 13px;
+  }
 
-    .popup-map-info p {
-        font-size: 0.9em;
-    }
+  .popup-location {
+    font-size: 11px;
+  }
+
+  .popup-info {
+    font-size: 11px;
+    padding: 8px 10px 10px;
+  }
+
+  .map-popup-card {
+    width: 94%;
+    padding: 16px 14px 16px;
+    border-radius: 16px;
+    max-height: 85vh;
+  }
+
+  .map-popup-card img {
+    max-height: 45vh;
+  }
+
+  .popup-close {
+    top: 8px;
+    right: 8px;
+    width: 32px;
+    height: 32px;
+    font-size: 20px;
+  }
+
+  .popup-map-info h3 {
+    font-size: 1.1rem;
+  }
+
+  .popup-map-info p {
+    font-size: 0.9rem;
+  }
 }

@@ -1,4 +1,4 @@
-@extends('Components.layout')
+@extends('components.layout')
 
 @section('title', 'Data Laporan Banjir')
 
@@ -14,48 +14,65 @@
     @include('components.hero', ['slides' => $slides])
 
     {{-- Statistik Bulanan --}}
-@php
-    $monthlyStats = $monthlyStats ?? collect();
-    $year = $monthlyStats->first()->year ?? date('Y');
+    @php
+        $monthlyStats = $monthlyStats ?? collect();
+        $year = $monthlyStats->first()->year ?? date('Y');
 
-    $months = collect(range(1,12))->map(function($m) use ($monthlyStats, $year){
-        $stat = $monthlyStats->firstWhere('month', $m);
-        return (object) [
-            'month' => $m,
-            'label' => $stat->label ?? \Carbon\Carbon::createFromDate($year,$m,1)->translatedFormat('F'),
-            'value' => $stat->value ?? 0,
-        ];
-    });
-@endphp
+        $months = collect(range(1,12))->map(function($m) use ($monthlyStats, $year){
+            $stat = $monthlyStats->firstWhere('month', $m);
+            return (object) [
+                'month' => $m,
+                'label' => $stat->label ?? \Carbon\Carbon::createFromDate($year,$m,1)->translatedFormat('F'),
+                'value' => $stat->value ?? 0,
+            ];
+        });
+    @endphp
 
-<section class="monthly-stats-section" style="margin-top:28px;">
-    <div class="container">
+    <section class="monthly-stats-section reveal">
+        <div class="container">
+            <div class="monthly-stats-card">
+                <div class="monthly-stats-header">
+                    <div>
+                        <p class="monthly-stats-eyebrow">Statistik Laporan</p>
+                        <h2 class="monthly-stats-title">
+                            Rekap Banjir Kota Parepare {{ $year }}
+                        </h2>
+                        <p class="monthly-stats-subtitle">
+                            Jumlah laporan banjir per bulan dalam satu tahun kalender.
+                        </p>
+                    </div>
 
-    <div style="text-align:right; margin-bottom:10px;">
-        <form method="GET" action="{{ route('data') }}">
-            <select name="year" onchange="this.form.submit()" class="year-select">
-                @foreach($availableYears as $y)
-                    <option value="{{ $y }}" {{ $y == $year ? 'selected' : '' }}>
-                        {{ $y }}
-                    </option>
-                @endforeach
-            </select>
-        </form>
-    </div>
+                    <form method="GET" action="{{ route('data') }}" class="monthly-stats-year-form">
+                        <label class="year-label" for="yearSelect">Tahun</label>
+                        <select id="yearSelect" name="year" onchange="this.form.submit()" class="year-select">
+                            @foreach($availableYears as $y)
+                                <option value="{{ $y }}" {{ $y == $year ? 'selected' : '' }}>
+                                    {{ $y }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </form>
+                </div>
 
-
-        <h2 class="news-title">Statistik Banjir di setiap Kecamatan Kota Parepare {{ $year }}</h2>
-
-        <div style="height:260px;">
-            <canvas id="monthlyStatsChart" height="140" style="width:100%"></canvas>
+                <div class="monthly-stats-chart-wrapper">
+                    <canvas id="monthlyStatsChart"></canvas>
+                </div>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
     {{-- Section: Berita / News --}}
-    <section class="news-section" style="margin-top:28px;">
-        <div class="container">
-            <h2 class="news-title">Berita & Laporan Terbaru</h2>
+    <section class="news-section reveal">
+        <div class="container news-container">
+            <div class="news-header">
+                <div>
+                    <p class="news-eyebrow">Update Laporan</p>
+                    <h2 class="news-title">Berita & Laporan Terbaru</h2>
+                    <p class="news-subtitle">
+                        Ringkasan kejadian banjir, respons cepat, dan informasi penting lainnya di Kota Parepare.
+                    </p>
+                </div>
+            </div>
 
             @php
                 // jika $news adalah paginator, buat startIndex agar index global konsisten
@@ -71,18 +88,16 @@
                     @php $globalIndex = $startIndex + $index; @endphp
 
                     <article class="news-item"
-                            data-index="{{ $globalIndex }}"
-                            style="{{ $index >= 3 ? 'display:none;' : '' }}">
+                             data-index="{{ $globalIndex }}"
+                             style="{{ $index >= 3 ? 'display:none;' : '' }}">
                         <div class="news-body">
-                            <div class="news-meta">
-                                <span class="news-date">
-                                    @if(!empty($item->published_at))
-                                        {{ \Carbon\Carbon::parse($item->published_at)->translatedFormat('l, d F Y') }}
-                                    @else
-                                        -
-                                    @endif
-                                </span>
-                            </div>
+                            <span class="news-date">
+                                @if(!empty($item->published_at))
+                                    {{ \Carbon\Carbon::parse($item->published_at)->translatedFormat('l, d F Y') }}
+                                @else
+                                    -
+                                @endif
+                            </span>
 
                             <h3 class="news-heading">{{ $item->title }}</h3>
 
@@ -95,33 +110,32 @@
                             </div>
 
                             <div class="news-actions">
-                                <button class="btn-more" type="button" aria-expanded="false">More</button>
+                                <button class="btn-more" type="button" aria-expanded="false">Baca selengkapnya</button>
                             </div>
                         </div>
 
                         <div class="news-media">
                             <img class="news-image"
-                                src="{{ $item->image && \Illuminate\Support\Str::startsWith($item->image, ['http','https']) ? $item->image : ($item->image ? asset('storage/'.$item->image) : asset('images/placeholder-800x500.png')) }}"
-                                alt="{{ $item->title }}"
-                                loading="lazy"
-                                onerror="this.onerror=null;this.src='{{ asset('images/placeholder-800x500.png') }}';"
+                                 src="{{ $item->image && \Illuminate\Support\Str::startsWith($item->image, ['http','https']) ? $item->image : ($item->image ? asset('storage/'.$item->image) : asset('images/placeholder-800x500.png')) }}"
+                                 alt="{{ $item->title }}"
+                                 loading="lazy"
+                                 onerror="this.onerror=null;this.src='{{ asset('images/placeholder-800x500.png') }}';"
                             />
                         </div>
                     </article>
                 @empty
-                    <p>Tidak ada berita saat ini.</p>
+                    <p class="news-empty">Tidak ada berita saat ini.</p>
                 @endforelse
             </div>
 
-
-            {{-- Pagination (Laravel) --}}
-            <div class="news-footer" style="margin-top:18px;">
+            {{-- Pagination + Load More --}}
+            <div class="news-footer">
                 <button id="btnLoadMore" class="btn-load-more">
-                    Load More
+                    Tampilkan lebih banyak
                 </button>
 
                 @if(isset($news) && method_exists($news, 'links'))
-                    <div class="pagination-wrapper" style="margin-top:10px;">
+                    <div class="pagination-wrapper">
                         {{ $news->links() }}
                     </div>
                 @endif
@@ -132,16 +146,17 @@
 
 @push('scripts')
 <script src="{{ asset('js/hero.js') }}" defer></script>
-<script src="{{ asset('js/news.js') }}" defer></script> <!-- untuk tombol More, modal gambar, dsb -->
+<script src="{{ asset('js/news.js') }}" defer></script>
 <script src="{{ asset('js/news-loadmore.js') }}" defer></script>
-<!-- Chart.js CDN -->
+
+{{-- Chart.js CDN --}}
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
 document.addEventListener('DOMContentLoaded', function(){
-    // Chart: monthly stats
     const months = {!! json_encode($months->pluck('label')) !!};
     const values = {!! json_encode($months->pluck('value')) !!};
+
     const ctxEl = document.getElementById('monthlyStatsChart');
     if (ctxEl) {
         const ctx = ctxEl.getContext('2d');
@@ -150,23 +165,38 @@ document.addEventListener('DOMContentLoaded', function(){
             data: {
                 labels: months,
                 datasets: [{
-                    label: 'Laporan',
+                    label: 'Jumlah laporan',
                     data: values,
-                    backgroundColor: Array(12).fill('rgba(14,84,44,0.85)'),
-                    borderColor: Array(12).fill('rgba(255,255,255,0.2)'),
-                    borderWidth: 1,
-                    barThickness: 'flex',
+                    backgroundColor: 'rgba(14, 148, 136, 0.9)',
+                    borderColor: 'rgba(255,255,255,0.6)',
+                    borderWidth: 1.2,
+                    borderRadius: 8,
+                    maxBarThickness: 32
                 }]
             },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                plugins: { legend: { display: false } },
-                scales: {
-                    x: { grid: { display: false, drawBorder: false }, ticks: { color: '#333' } },
-                    y: { beginAtZero: true, grid: { color: 'rgba(0,0,0,0.06)' }, ticks: { color: '#333' } }
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        backgroundColor: '#0f172a',
+                        padding: 10,
+                        cornerRadius: 6
+                    }
                 },
-                layout: { padding: { top: 8, bottom: 8 } }
+                scales: {
+                    x: {
+                        grid: { display: false, drawBorder: false },
+                        ticks: { color: '#e5e7eb', font: { size: 11 } }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        grid: { color: 'rgba(15,23,42,0.18)', drawBorder: false },
+                        ticks: { color: '#e5e7eb', font: { size: 11 }, precision:0 }
+                    }
+                },
+                layout: { padding: { top: 6, bottom: 6, left: 4, right: 4 } }
             }
         });
     }

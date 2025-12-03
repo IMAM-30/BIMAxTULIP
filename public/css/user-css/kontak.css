@@ -1,28 +1,93 @@
-
-
 .kontak-section {
     padding: 60px 0;
-    background: #fff;
+    min-height: calc(100vh - 80px);   
+    display: flex;
+    align-items: center;
+    margin-top: 80px;
 }
-.kontak-section .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-.kontak-section-title { text-align:center; font-size:28px; margin-bottom:30px; color:#1f6f77; }
 
-.kontak-grid { display:flex; flex-direction:column; gap:20px; }
+.kontak-section .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 100%;
+}
 
-.kontak-row { display:flex; gap:20px; justify-content:space-between; flex-wrap:wrap; }
+.kontak-section-title {
+    text-align: center;
+    font-size: 70px;
+    margin-bottom: 50px;
+    color: #ffffff;
+}
+
+.kontak-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.kontak-row {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
 
 .kontak-card {
-    background:#fff;
-    border-radius:10px;
-    padding:20px;
-    box-shadow:0 6px 18px rgba(0,0,0,0.06);
-    flex:1 1 calc(33.333% - 13.333px);
-    min-width:220px;
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+    flex: 1 1 calc(33.333% - 13.333px);
+    min-width: 220px;
 }
-.kontak-card.empty { background:transparent; box-shadow:none; }
-.kontak-title { font-size:18px; margin-bottom:8px; color:#0e5960; }
-.kontak-desc { font-size:14px; color:#666; line-height:1.4; margin-bottom:12px; }
-.kontak-link { display:inline-block; font-size:14px; color:#1f9aa0; text-decoration:underline; }
+
+.kontak-card.empty {
+    background: transparent;
+    box-shadow: none;
+    pointer-events: none;
+}
+
+.kontak-title {
+    font-size: 18px;
+    margin-bottom: 8px;
+    color: #0e5960;
+}
+
+.kontak-desc {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.4;
+    margin-bottom: 12px;
+}
+
+.kontak-link {
+    display: inline-block;
+    font-size: 14px;
+    color: #1f9aa0;
+    text-decoration: underline;
+}
+
+
+
+.kontak-row .kontak-card.reveal {
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s cubic-bezier(0.22, 0.9, 0.3, 1);
+}
+
+.kontak-row .kontak-card.reveal:nth-child(1) { transition-delay: 0s; }
+.kontak-row .kontak-card.reveal:nth-child(2) { transition-delay: 0.12s; }
+.kontak-row .kontak-card.reveal:nth-child(3) { transition-delay: 0.22s; }
+
 @media (max-width: 900px) {
-    .kontak-card { flex:1 1 100%; }
+    .kontak-section {
+        min-height: auto;
+        padding: 40px 0;
+        margin-top: 100px;
+    }
+
+    .kontak-card {
+        flex: 1 1 100%;
+    }
 }

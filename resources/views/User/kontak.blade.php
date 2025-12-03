@@ -1,4 +1,4 @@
-@extends('Components.layout')
+@extends('components.layout')
 
 @section('title', 'Kontak Kami')
 

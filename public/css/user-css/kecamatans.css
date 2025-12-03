@@ -1,142 +1,159 @@
-/* Layout wrapper */
 .kecamatan-section {
   padding: 56px 0;
-  background: linear-gradient(180deg, rgba(16,24,32,0.04) 0%, rgba(255,255,255,0.00) 100%);
+  background: transparent;
+  min-height: calc(100vh - 80px);
+  display: flex;
+  align-items: center;
 }
+
 .kecamatan-section .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
+  width: 100%;
 }
 
-/* Title */
+
 .kecamatan-title {
-  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  font-weight: 700;
-  font-size: 30px;
-  color: #0b2e2a;         
-  text-align: center;
-  margin-bottom: 28px;
-  letter-spacing: -0.2px;
+    font-family: "Inter", sans-serif;
+    font-weight: 700;
+    font-size: 60px;
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 100px;
+    letter-spacing: -0.4px;
 }
 
-/* Grid */
+.kecamatan-helper-mobile {
+    font-family: "Inter", sans-serif;
+    font-size: 13px;
+    text-align: center;
+    color: #64748b;
+    margin-bottom: 24px;
+    display: none;
+}
+
 .kecamatan-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 22px;
-  align-items: stretch;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
 }
 
-/* Card */
 .kec-box {
-  background: linear-gradient(180deg, #ffffff 0%, #fbfffb 100%);
-  border-radius: 14px;
-  padding: 26px 20px;
-  text-align: center;
-  box-shadow: 0 10px 30px rgba(8, 30, 25, 0.06);
-  border: 1px solid rgba(11, 47, 40, 0.04);
-  transition: transform .26s cubic-bezier(.2,.9,.3,1), box-shadow .26s ease, border-color .26s ease;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 150px;
-  position: relative;
-  overflow: hidden;
+    background: radial-gradient(circle at top left, #0f766e 0, #0369a1 40%, #020617 100%);
+    backdrop-filter: blur(12px) saturate(180%);
+    border-radius: 35%;
+    padding: 26px 20px;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.32);
+    box-shadow: 0 12px 28px rgba(0, 27, 22, 0.08);
+    transition:
+        transform .25s cubic-bezier(.22,.68,.36,1),
+        box-shadow .25s ease,
+        border-color .25s ease;
 }
 
-/* Hover / focus */
-.kec-box:hover,
-.kec-box:focus-within {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 44px rgba(8, 30, 25, 0.12);
-  border-color: rgba(6, 120, 95, 0.14);
+.kec-box:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 18px 40px rgba(0, 27, 22, 0.18);
+    border-color: rgba(16, 185, 129, 0.25);
 }
 
-/* Accent ribbon (optional small decorative corner) */
-.kec-box::after {
-  content: "";
-  position: absolute;
-  right: -40px;
-  top: -40px;
-  width: 120px;
-  height: 120px;
-  background: radial-gradient(circle at 30% 30%, rgba(3,77,55,0.04), rgba(255,255,255,0));
-  transform: rotate(25deg);
-  pointer-events: none;
-  opacity: 0.9;
-}
-
-/* Count badge */
 .kec-count {
-  display: inline-grid;
-  place-items: center;
-  width: 84px;
-  height: 84px;
-  border-radius: 999px;
-  background: linear-gradient(135deg, #16a085 0%, #2ecc71 100%);
-  color: #fff;
-  font-size: 28px;
-  font-weight: 800;
-  box-shadow: 0 6px 18px rgba(30, 115, 86, 0.18);
-  margin-bottom: 12px;
-  transition: transform .22s ease;
+    width: 82px;
+    height: 82px;
+    border-radius: 50%;
+
+    display: grid;
+    place-items: center;
+    color: white;
+    font-size: 70px;
+    font-weight: 800;
+    margin: 0 auto 10px;
+    transition: transform .22s ease;
 }
 
-/* Slight pop on hover */
-.kec-box:hover .kec-count { transform: translateY(-6px) scale(1.03); }
+.kec-box:hover .kec-count {
+    transform: translateY(-6px) scale(1.05);
+}
 
-/* Name */
 .kec-name {
-  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  font-size: 18px;
-  color: #0b2e2a;
-  font-weight: 600;
-  margin-top: 4px;
-  letter-spacing: 0.1px;
+    font-family: "Inter", sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: #c8e2df;
 }
 
-/* Secondary small label (if you want to show 'kecamatan' etc.) */
-.kec-sub {
-  font-size: 13px;
-  color: rgba(11,46,40,0.6);
-  margin-top: 6px;
+@media (max-width: 1100px) {
+    .kecamatan-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
-/* Accessible focus for keyboard users */
-.kec-box:focus {
-  outline: none;
-  box-shadow: 0 0 0 4px rgba(6,120,95,0.12), 0 20px 44px rgba(8,30,25,0.12);
+@media (max-width: 900px) {
+    .kecamatan-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .kecamatan-title {
+        font-size: 26px;
+    }
 }
 
-/* RESPONSIVE: adapt columns */
-@media (max-width:1100px) {
-  .kecamatan-grid { grid-template-columns: repeat(3, 1fr); gap: 18px; }
-  .kec-count { width: 76px; height: 76px; font-size: 24px; }
-}
-@media (max-width:820px) {
-  .kecamatan-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
-  .kecamatan-title { font-size: 26px; }
-}
-@media (max-width:520px) {
-  .kecamatan-grid { grid-template-columns: 1fr; gap: 14px; }
-  .kec-box { padding: 20px; min-height: 120px; }
-  .kec-count { width: 64px; height: 64px; font-size: 20px; }
-  .kecamatan-title { font-size: 22px; }
+
+@media (max-width: 600px) {
+
+    .kecamatan-title {
+        font-size: 22px;
+        margin-bottom: 35px;
+    }
+
+    .kecamatan-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+
+    .kec-box {
+        padding: 18px 14px;
+        border-radius: 14px;
+        min-height: 135px;
+    }
+
+    .kec-count {
+        width: 58px;
+        height: 58px;
+        font-size: 50px;
+        margin-bottom: 8px;
+    }
+
+    .kec-name {
+        font-size: 20px;
+        letter-spacing: 0.2px;
+    }
 }
 
-/* Utilities: center inside a narrower container (if needed) */
-.kecamatan-section .container.narrow {
-  max-width: 1000px;
-  margin-left: auto;
-  margin-right: auto;
-}
 
-/* DARK BACKGROUND VARIANT — if your home header uses dark bg, this helps */
-.kecamatan-section.dark .kec-box {
-  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
-  border: 1px solid rgba(255,255,255,0.04);
+@media (max-width: 420px) {
+
+    .kecamatan-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .kec-box {
+        padding: 16px 12px;
+        min-height: 120px;
+    }
+
+    .kec-count {
+        width: 50px;
+        height: 50px;
+        font-size: 17px;
+        margin-bottom: 6px;
+    }
+
+    .kec-name {
+        font-size: 14px;
+    }
 }
-.kecamatan-section.dark .kecamatan-title { color: #ffffff; }
-.kecamatan-section.dark .kec-name { color: rgba(255,255,255,0.92); }

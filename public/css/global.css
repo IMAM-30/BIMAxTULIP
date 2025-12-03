@@ -3,3 +3,172 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+:root {
+    --bg-main: #06163A;
+    --bg-secondary: #0B1F55;
+    --accent-soft: rgba(41, 121, 255, 0.3);
+    --accent-outline: rgba(255, 255, 255, 0.18);
+    --accent-outline-soft: rgba(255, 255, 255, 0.1);
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+
+    background:
+        radial-gradient(circle at 0% 0%, #102A6B 0, rgba(16, 42, 107, 0.7) 30%, transparent 60%),
+        radial-gradient(circle at 100% 30%, #081C4A 0, rgba(8, 28, 74, 0.8) 40%, transparent 70%),
+        var(--bg-main);
+    background-attachment: fixed;
+
+    color: #F9FAFB;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif !important;
+}
+
+/* Konten di atas dekorasi */
+nav, main, footer {
+    position: relative;
+    z-index: 10;
+}
+
+
+.bg-circle {
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1;
+    will-change: transform, opacity;
+}
+
+.bg-circle.big-left {
+    width: 720px;
+    height: 720px;
+    bottom: -320px;
+    left: -240px;
+    background: radial-gradient(circle, var(--bg-secondary) 0%, transparent 65%);
+    filter: blur(8px);
+    opacity: 0.95;
+    animation: float-left 26s ease-in-out infinite alternate;
+}
+
+.bg-circle.right-outline {
+    width: 180px;
+    height: 180px;
+    top: 260px;
+    right: 60px;
+    background: transparent;
+    border: 2px solid var(--accent-outline);
+    animation: float-right 20s ease-in-out infinite alternate;
+}
+
+.bg-circle.top-left {
+    width: 420px;
+    height: 420px;
+    top: -170px;
+    left: -110px;
+    background: transparent;
+    border: 1px solid var(--accent-outline-soft);
+    animation: float-top 30s ease-in-out infinite alternate;
+}
+
+.bg-circle.small-soft {
+    width: 110px;
+    height: 110px;
+    top: 70%;
+    right: 20%;
+    background: radial-gradient(circle, var(--accent-soft) 0%, transparent 70%);
+    filter: blur(4px);
+    opacity: 0.8;
+    border: none;
+    animation: float-soft 18s ease-in-out infinite alternate;
+}
+
+/* ===========================
+   KEYFRAMES ANIMASI
+   =========================== */
+
+@keyframes float-left {
+    0%   { transform: translate3d(0, 0, 0) scale(1);   opacity: 0.9; }
+    50%  { transform: translate3d(40px, -20px, 0) scale(1.03); opacity: 1; }
+    100% { transform: translate3d(80px, 10px, 0) scale(1.06);  opacity: 0.85; }
+}
+
+@keyframes float-right {
+    0%   { transform: translate3d(0, 0, 0) scale(1); }
+    50%  { transform: translate3d(-10px, 20px, 0) scale(1.05); }
+    100% { transform: translate3d(-25px, -10px, 0) scale(0.98); }
+}
+
+@keyframes float-top {
+    0%   { transform: translate3d(0, 0, 0) scale(1); }
+    50%  { transform: translate3d(30px, 10px, 0) scale(1.02); }
+    100% { transform: translate3d(60px, -15px, 0) scale(1.04); }
+}
+
+@keyframes float-soft {
+    0%   { transform: translate3d(0, 0, 0) scale(1);   opacity: 0.7; }
+    50%  { transform: translate3d(-15px, -20px, 0) scale(1.05); opacity: 0.9; }
+    100% { transform: translate3d(10px, -35px, 0) scale(0.95);  opacity: 0.6; }
+}
+
+@media (max-width: 992px) {
+    .bg-circle.big-left {
+        width: 520px;
+        height: 520px;
+        bottom: -260px;
+        left: -220px;
+    }
+
+    .bg-circle.top-left {
+        width: 320px;
+        height: 320px;
+        top: -160px;
+        left: -140px;
+    }
+
+    .bg-circle.right-outline {
+        width: 140px;
+        height: 140px;
+        top: 240px;
+        right: 30px;
+    }
+}
+
+@media (max-width: 576px) {
+    body {
+        background:
+            radial-gradient(circle at 10% 0%, #102A6B 0, rgba(16, 42, 107, 0.7) 35%, transparent 60%),
+            var(--bg-main);
+    }
+
+    .bg-circle.big-left {
+        width: 420px;
+        height: 420px;
+        bottom: -260px;
+        left: -220px;
+    }
+
+    .bg-circle.top-left {
+        width: 260px;
+        height: 260px;
+        top: -140px;
+        left: -140px;
+    }
+
+    .bg-circle.right-outline {
+        width: 110px;
+        height: 110px;
+        top: 220px;
+        right: -10px;
+    }
+
+    .bg-circle.small-soft {
+        width: 80px;
+        height: 80px;
+        top: 72%;
+        right: 8%;
+    }
+}

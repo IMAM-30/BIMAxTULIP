@@ -1,75 +1,300 @@
-/* Navbar utama */
 .navbar {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    color: #fff;
     z-index: 1000;
     padding: 10px 50px;
     display: flex;
     justify-content: center;
     align-items: center;
+
+    /* Default transparan (di atas hero) */
+    background: transparent;
+    color: #fff;
+    transition:
+        background-color 0.3s ease,
+        box-shadow 0.3s ease,
+        backdrop-filter 0.3s ease,
+        padding 0.3s ease;
 }
 
-/* Container untuk simetris */
+.navbar.navbar-scrolled {
+    background: rgba(15, 23, 42, 0.94); 
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.5);
+    padding: 8px 40px;
+}
+
 .navbar-container {
     width: 100%;
     max-width: 1200px;
     display: flex;
-    justify-content: space-between; 
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Kiri: Logo */
+.navbar-left {
+    display: flex;
     align-items: center;
 }
 
-/* Logo */
 .logo {
-    font-weight: bold;
-    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 0.35em;
+    font-size: 20px;
     color: #fff;
+    text-decoration: none;
 }
 
-/* Menu tengah */
 .navbar-menu {
     display: flex;
     list-style: none;
-    gap: 50px;
+    gap: 32px;
+    margin: 0;
+    padding: 0;
 }
 
 .navbar-menu li a {
-    color: #fff;
+    color: #e5e7eb;
     text-decoration: none;
     font-weight: 500;
-    transition: 0.3s;
+    font-size: 14px;
+    position: relative;
+    padding-bottom: 4px;
+    transition: color 0.3s ease;
+}
+
+.navbar-menu li a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    border-radius: 999px;
+    background: #facc15;
+    transition: width 0.3s ease;
 }
 
 .navbar-menu li a:hover {
-    color: #f39c12;
+    color: #facc15;
 }
 
-/* Action di kanan (contoh tombol login) */
-.navbar-actions .btn-login {
-    background-color: #f39c12;
-    color: #fff;
-    padding: 8px 15px;
-    border-radius: 5px;
-    text-decoration: none;
+.navbar-menu li a:hover::after {
+    width: 100%;
+}
+
+.navbar-auth {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-pill {
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-size: 13px;
     font-weight: 500;
-    transition: 0.3s;
+    border: 1px solid transparent;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition:
+        background-color 0.25s ease,
+        border-color 0.25s ease,
+        color 0.25s ease,
+        transform 0.1s ease;
+    white-space: nowrap;
 }
 
-.navbar-actions .btn-login:hover {
-    background-color: #e67e22;
+.btn-pill:hover {
+    transform: translateY(-1px);
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    .navbar-container {
-        flex-direction: column;
-        gap: 10px;
+.btn-soft {
+    background: #eef2ff;
+    border-color: #cbd5f5;
+    color: #475569;
+}
+
+.btn-soft:hover {
+    background: #e0e7ff;
+}
+
+.btn-primary {
+    background: #dbeafe;
+    border-color: #bfdbfe;
+    color: #1d4ed8;
+}
+
+.btn-primary:hover {
+    background: #bfdbfe;
+}
+
+.btn-danger {
+    background: #ef4444;
+    border-color: #b91c1c;
+    color: #ffffff;
+}
+
+.btn-danger:hover {
+    background: #dc2626;
+}
+
+.inline-form {
+    display: inline-block;
+    margin: 0;
+}
+
+
+.navbar-toggle {
+    display: none; 
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 6px;
+    margin-left: 12px;
+}
+
+.navbar-toggle span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    border-radius: 999px;
+    background-color: #e5e7eb;
+    margin: 4px 0;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+
+.navbar-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.55);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 999; 
+    transition: opacity 0.3s ease;
+}
+
+.navbar-backdrop.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.navbar-sidebar {
+    position: fixed;
+    top: 0;
+    right: -280px;
+    width: 260px;
+    height: 100vh;
+    background: #020617;
+    color: #e5e7eb;
+    z-index: 1001;
+    padding: 16px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    box-shadow: -10px 0 30px rgba(15, 23, 42, 0.75);
+    transition: right 0.3s ease;
+}
+
+.navbar-sidebar.open {
+    right: 0;
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sidebar-header .logo {
+    font-size: 18px;
+    letter-spacing: 0.3em;
+}
+
+.sidebar-close {
+    border: none;
+    background: transparent;
+    color: #e5e7eb;
+    font-size: 28px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.sidebar-menu li a {
+    color: #e5e7eb;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 4px;
+    border-radius: 6px;
+    transition: background-color 0.25s ease, padding-left 0.25s ease;
+}
+
+.sidebar-menu li a:hover {
+    background-color: rgba(148, 163, 184, 0.25);
+    padding-left: 10px;
+}
+
+.sidebar-auth {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(148, 163, 184, 0.35);
+}
+
+.full-width {
+    width: 100%;
+}
+
+.no-scroll {
+    overflow: hidden;
+}
+
+
+@media (max-width: 992px) {
+    .navbar {
+        padding: 10px 20px;
     }
+
     .navbar-menu {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 15px;
+        display: none; 
+    }
+
+    .navbar-auth {
+        display: none; 
+    }
+
+    .navbar-toggle {
+        display: block; 
+    }
+}
+
+@media (max-width: 576px) {
+    .navbar {
+        padding: 8px 16px;
+    }
+
+    .logo {
+        font-size: 18px;
+        letter-spacing: 0.25em;
     }
 }

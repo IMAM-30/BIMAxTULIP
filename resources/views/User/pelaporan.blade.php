@@ -1,10 +1,9 @@
-@extends('Components.layout')
+@extends('components.layout')
 
 @section('title', 'Pelaporan')
 
 @push('styles')
 <link rel="stylesheet" href="{{ asset('css/user-css/home.css') }}">
-<link rel="stylesheet" href="{{ asset('css/user-css/map-popup.css') }}">
 <link rel="stylesheet" href="{{ asset('css/user-css/pelaporan.css') }}">
 
 @endpush
@@ -12,8 +11,9 @@
 @section('content')
 @include('components.hero', ['slides' => $slides])
 
-<div class="container-pelaporan">
-    <div class="form-wrapper">
+
+<div class="container-pelaporan reveal">
+    <div class="form-wrapper reveal animate-bounce">
         <h2>Formulir Laporan Banjir</h2>
         <p>Silakan isi formulir di bawah ini untuk melaporkan kejadian banjir di sekitar Anda.</p>
 

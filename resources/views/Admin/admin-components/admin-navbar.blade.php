@@ -1,33 +1,91 @@
-<nav class="navbar">
-    <div class="navbar-container">
-        <div class="navbar-brand">Admin Panel</div>
-        
-        <ul class="navbar-menu">
-            <li><a href="{{ route('admin.home') }}">Home</a></li>
-            <li><a href="{{ route('admin.sections') }}">Sections</a></li>
-            <li><a href="{{ route('admin.maps') }}">Maps</a></li>
-            <li><a href="{{ route('faq.index') }}">FAQ</a></li>
-            <li><a href="{{ route('admin.laporan') }}">Laporan</a></li>
-            <li><a href="{{ route('admin.kontak.index') }}">Kontak</a></li>
-            <li><a href="{{ route('admin.websitekontak.index') }}">WebsiteKontak</a></li>
-            <li><a href="{{ route('admin.news.index') }}">News</a></li>
-            <li><a href="{{ route('admin.monthly-stats.index') }}">Monthly Stats</a></li>
-            <li><a href="{{ route('admin.whatsapp.index') }}">WhatsApp Links</a></li>
-            <li><a href="{{ route('admin.kecamatans.index') }}">Kecamatan</a></li>
-            <li><a href="{{ route('admin.accounts.index') }}">Admin Accounts</a></li>
+<aside class="admin-sidebar" id="adminSidebar">
+    <div class="sidebar-inner">
+        <div class="sidebar-header">
+            <h2 class="sidebar-title">Admin Panel</h2>
+
+            <button class="sidebar-toggle" id="sidebarToggle" type="button">
+                ☰
+            </button>
+
+            <span class="sidebar-username">
+                👋 Halo, {{ session('admin_username') }}
+            </span>
+        </div>
+
+        <ul class="sidebar-menu">
+            <li>
+                <a href="{{ route('admin.home') }}"
+                   class="{{ request()->routeIs('admin.home') ? 'active' : '' }}">
+                    <span class="icon">🏠</span><span class="label">Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('admin.maps') }}"
+                   class="{{ request()->routeIs('admin.maps*') ? 'active' : '' }}">
+                    <span class="icon">🗺️</span><span class="label">Maps</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('faq.index') }}"
+                   class="{{ request()->routeIs('faq.*') ? 'active' : '' }}">
+                    <span class="icon">❓</span><span class="label">FAQ</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('admin.laporan') }}"
+                   class="{{ request()->routeIs('admin.laporan*') ? 'active' : '' }}">
+                    <span class="icon">📨</span><span class="label">Laporan</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('admin.kontak.index') }}"
+                   class="{{ request()->routeIs('admin.kontak.*') ? 'active' : '' }}">
+                    <span class="icon">📞</span><span class="label">Kontak</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('admin.websitekontak.index') }}"
+                   class="{{ request()->routeIs('admin.websitekontak.*') ? 'active' : '' }}">
+                    <span class="icon">🌐</span><span class="label">Website Kontak</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('admin.news.index') }}"
+                   class="{{ request()->routeIs('admin.news.*') ? 'active' : '' }}">
+                    <span class="icon">📰</span><span class="label">News</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('admin.monthly-stats.index') }}"
+                   class="{{ request()->routeIs('admin.monthly-stats.*') ? 'active' : '' }}">
+                    <span class="icon">📊</span><span class="label">Monthly Stats</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('admin.whatsapp.index') }}"
+                   class="{{ request()->routeIs('admin.whatsapp.*') ? 'active' : '' }}">
+                    <span class="icon">💬</span><span class="label">WhatsApp</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('admin.kecamatans.index') }}"
+                   class="{{ request()->routeIs('admin.kecamatans.*') ? 'active' : '' }}">
+                    <span class="icon">📍</span><span class="label">Kecamatan</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('admin.accounts.index') }}"
+                   class="{{ request()->routeIs('admin.accounts.*') ? 'active' : '' }}">
+                    <span class="icon">👤</span><span class="label">Admin Accounts</span>
+                </a>
+            </li>
         </ul>
 
-        <div style="display:flex;align-items:center;gap:12px;">
-            <span style="font-size:14px;color:#64748b;">
-                Halo, {{ session('admin_username') }}
-            </span>
-
-            <form action="{{ route('admin.logout') }}" method="POST" style="display:inline;">
-                @csrf
-                <button type="submit" style="background:none;border:none;color:#f97373;cursor:pointer;">
-                    Logout
-                </button>
-            </form>
-        </div>
+        <form action="{{ route('admin.logout') }}" method="POST" class="sidebar-logout">
+            @csrf
+            <button type="submit">
+                <span class="icon">🚪</span><span class="label">Logout</span>
+            </button>
+        </form>
     </div>
-</nav>
+</aside>

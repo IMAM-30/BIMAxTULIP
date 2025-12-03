@@ -1,4 +1,4 @@
-@extends('Components.layout')
+@extends('components.layout')
 
 @section('title', 'MAPS Laporan Banjir')
 
@@ -11,34 +11,27 @@
     {{-- Hero Section --}}
     @include('components.hero', ['slides' => $slides])
 
-    {{-- Statistik Laporan --}}
-    <section class="stats">
-        <h2> MAPS Laporan Banjir di setiap Kecamatan Kota Parepare 2025</h2>
-        <div class="stats-container">
-            <div class="stat-box"><h3>3</h3><p>Bacukiki</p></div>
-            <div class="stat-box"><h3>0</h3><p>Bacukiki Barat</p></div>
-            <div class="stat-box"><h3>9</h3><p>Soreang</p></div>
-            <div class="stat-box"><h3>7</h3><p>Ujung</p></div>
-        </div>
-    </section>
 
     {{-- Maps Section --}}
-    <section id="lokasi" class="lokasi-section">
-        <h2>Lokasi Kejadian Banjir</h2>
+    <section id="lokasi" class="lokasi-section reveal animate-bounce">
+        <h2 class="reveal">
+            SEBARAN LAPORAN BANJIR <br>
+            KOTA PAREPARE
+        </h2>
+
         <div id="map" style="height: 450px; border-radius: 10px; overflow: hidden;"></div>
 
-            <div id="mapPopupOverlay" class="map-popup-overlay">
-                <div class="map-popup-card">
-                    <button class="popup-close" onclick="closeMapPopup()">×</button>
-                    <img id="popupMapImage" src="" alt="Gambar Lokasi">
-                    <div class="popup-map-info">
-                        <h3 id="popupMapNama"></h3>
-                        <p id="popupMapAlamat"></p>
-                        <p id="popupMapTanggal"></p>
-                    </div>
+        <div id="mapPopupOverlay" class="map-popup-overlay">
+            <div class="map-popup-card">
+                <button class="popup-close" onclick="closeMapPopup()">×</button>
+                <img id="popupMapImage" src="" alt="Gambar Lokasi">
+                <div class="popup-map-info">
+                    <h3 id="popupMapNama"></h3>
+                    <p id="popupMapAlamat"></p>
+                    <p id="popupMapTanggal"></p>
                 </div>
             </div>
-        </section>
+        </div>
     </section>
 
 <script src="{{ asset('js/maps.js') }}"></script>

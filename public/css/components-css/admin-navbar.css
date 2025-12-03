@@ -1,31 +1,172 @@
-.navbar {
-    background-color: #1f2937;
-    color: #fff;
-    padding: 1rem;
+.admin-sidebar {
+    width: 260px;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    background: #111827;
+    color: #e5e7eb;
+    border-right: 1px solid rgba(255, 255, 255, 0.06);
+
+    overflow-y: auto;
+    overflow-x: hidden;
+    transition: width 0.25s ease, transform 0.25s ease;
+    z-index: 40;
 }
 
-.navbar-container {
+.admin-sidebar.collapsed {
+    width: 78px;
+}
+
+.sidebar-inner {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    min-height: 100%;
+    padding: 1rem 0.8rem;
 }
 
-.navbar-menu {
-    list-style: none;
-    display: flex;
-    gap: 1rem;
+
+.sidebar-header {
+    text-align: center;
+    margin-bottom: 1rem;
+    position: relative;
 }
 
-.navbar-menu li a,
-.navbar-menu li button {
+.sidebar-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+    white-space: nowrap;
+    transition: opacity .25s ease;
+}
+
+.admin-sidebar.collapsed .sidebar-title {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.sidebar-toggle {
+    position: absolute;
+    top: 0;
+    right: -10px;
+    font-size: 1.3rem;
     color: #fff;
-    text-decoration: none;
     background: none;
     border: none;
     cursor: pointer;
+    opacity: 0.8;
+    transition: opacity .2s ease;
 }
 
-.navbar-menu li a:hover,
-.navbar-menu li button:hover {
+.sidebar-toggle:hover {
+    opacity: 1;
+}
+
+.sidebar-username {
+    font-size: .85rem;
     color: #9ca3af;
+    transition: opacity .25s ease;
+}
+
+.admin-sidebar.collapsed .sidebar-username {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex: 1; 
+}
+
+.sidebar-menu li {
+    margin-bottom: 0.3rem;
+}
+
+.sidebar-menu a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+
+    color: #e5e7eb;
+    text-decoration: none;
+    font-size: .95rem;
+
+    transition: all .2s ease;
+}
+
+.sidebar-menu a:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #38bdf8;
+    transform: translateX(5px);
+}
+
+.icon {
+    font-size: 1.2rem;
+}
+
+/* Active menu */
+.sidebar-menu a.active {
+    background: rgba(56, 189, 248, 0.18);
+    color: #38bdf8;
+    box-shadow: inset 3px 0 0 #38bdf8;
+}
+
+.admin-sidebar.collapsed .label {
+    opacity: 0;
+    width: 0;
+    overflow: hidden;
+}
+
+
+.sidebar-logout {
+    margin-top: 0.8rem;
+}
+
+.sidebar-logout button {
+    width: 100%;
+    padding: 0.7rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    background: rgba(239, 68, 68, 0.18);
+    border: 1px solid rgba(239, 68, 68, 0.45);
+    color: #fca5a5;
+    border-radius: 8px;
+
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.sidebar-logout button:hover {
+    background: rgba(239, 68, 68, 0.35);
+    color: #fff;
+}
+
+.admin-sidebar.collapsed .sidebar-logout .label {
+    display: none;
+}
+
+
+@media (max-width: 768px) {
+    .admin-sidebar {
+        transform: translateX(-100%);
+        width: 260px;  
+    }
+
+    .admin-sidebar.open {
+        transform: translateX(0);
+    }
+
+    .admin-sidebar.collapsed {
+        width: 260px;
+    }
 }

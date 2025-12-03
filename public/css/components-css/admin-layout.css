@@ -1,12 +1,17 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f3f4f6;
-    margin: 0;
-    padding: 0;
+.main-content {
+    margin-left: 260px;        
+    padding: 2rem;
+    min-height: 100vh;
+    transition: margin-left 0.25s ease;
 }
 
-.main-content {
-    max-width: 1200px;
-    margin: 2rem auto;
-    padding: 1rem;
+.admin-sidebar.collapsed ~ .main-content {
+    margin-left: 78px;
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        margin-left: 0;
+        padding: 1rem;
+    }
 }
