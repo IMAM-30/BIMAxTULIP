@@ -95,8 +95,8 @@ Route::post('/pelaporan', [LaporanController::class, 'storeFallback']); // fallb
 // ===============================
 // Halaman Utama (User)
 // ===============================
-Route::get('/', [SectionController::class, 'index'])->name('home');
-Route::get('/home', [HomeController::class, 'index'])->name('home.index');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home.index'); // atau redirect ke route('home')
 Route::get('/data', [HomeController::class, 'data'])->name('data');
 Route::get('/maps', [HomeController::class, 'maps'])->name('maps');
 Route::get('/sistemcerdas', [HomeController::class, 'sistemcerdas'])->name('sistemcerdas');

@@ -11,14 +11,14 @@ class SectionController extends Controller
     public function index()
     {
         $sections = Section::latest()->get();
-        return view('User.home', compact('sections'));
+        return view('user.home', compact('sections'));
     }
 
     public function admin()
     {
         $sections = Section::latest()->get();
-        $slides = \App\Models\Slide::latest()->get(); // tambahkan ini
-        return view('Admin.admin-home', compact('sections', 'slides'));
+        $slides = \App\Models\Slide::latest()->get(); 
+        return view('admin.admin-home', compact('sections', 'slides'));
     }
 
 

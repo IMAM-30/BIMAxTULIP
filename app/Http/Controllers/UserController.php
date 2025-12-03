@@ -17,6 +17,6 @@ class UserController extends Controller
             ? FaqCategory::with('faqs')->get()
             : collect();
 
-        return view('User.faq', compact('slides', 'categories'));
+        return view('user.faq', compact('slides', 'categories'));
     }
 }

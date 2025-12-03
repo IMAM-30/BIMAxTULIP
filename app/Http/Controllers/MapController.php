@@ -11,7 +11,7 @@ class MapController extends Controller
     public function index()
     {
         $maps = Map::all();
-        return view('Admin.admin-maps', compact('maps'));
+        return view('admin.admin-maps', compact('maps'));
     }
 
     public function store(Request $request)

@@ -1,4 +1,4 @@
-@extends('Admin.admin-components.admin-layout')
+@extends('admin.admin-components.admin-layout')
 
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/admin-css/admin-faq.css') }}">
@@ -12,7 +12,6 @@
         <div class="alert success">{{ session('success') }}</div>
     @endif
 
-    {{-- FORM TAMBAH KATEGORI --}}
     <div class="form-container">
         <form action="{{ route('faq.category.store') }}" method="POST">
             @csrf
@@ -20,7 +19,6 @@
             <button type="submit">Tambah Kategori</button>
         </form>
 
-        {{-- FORM TAMBAH PERTANYAAN --}}
         <form action="{{ route('faq.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <select name="category_id" required>
@@ -37,7 +35,6 @@
         </form>
     </div>
 
-    {{-- DAFTAR KATEGORI & PERTANYAAN --}}
     @foreach($categories as $category)
         <div class="category-box">
             <div class="category-header">
@@ -49,7 +46,6 @@
                 </form>
             </div>
 
-            {{-- FORM EDIT CATEGORY INLINE --}}
             <form class="category-edit-form" style="display:none;" data-id="{{ $category->id }}">
                 @csrf
                 @method('PUT')
@@ -84,7 +80,6 @@
                         </div>
                     </div>
 
-                    {{-- FORM EDIT FAQ --}}
                     <form class="faq-edit-form" style="display:none;" enctype="multipart/form-data">
                         @csrf
                         @method('POST')
@@ -103,12 +98,10 @@
     @endforeach
 </div>
 
-{{-- SCRIPT UNTUK INLINE EDIT --}}
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
-    // ========== FAQ INLINE EDIT ==========
     document.querySelectorAll('.edit-btn').forEach(btn => {
         btn.addEventListener('click', function() {
             const item = this.closest('.faq-item');
@@ -155,7 +148,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // ========== CATEGORY INLINE EDIT ==========
     document.querySelectorAll('.edit-category-btn').forEach(btn => {
         btn.addEventListener('click', function() {
             const header = this.closest('.category-header');

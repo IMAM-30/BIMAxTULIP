@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Log;
 
 class OtpController extends Controller
 {
-    protected $otpTtlMinutes = 5; // OTP berlaku 5 menit
+    protected $otpTtlMinutes = 5;
 
     public function requestOtp(Request $request)
     {
@@ -31,7 +31,6 @@ class OtpController extends Controller
         $name = $request->input('nama');
         Log::info("OTP request received for phone: {$phone} name: ".($name ?: 'N/A'));
 
-        // rate limit
         $recentCount = OtpRequest::where('phone', $phone)
                         ->where('created_at', '>=', Carbon::now()->subMinutes(15))
                         ->count();

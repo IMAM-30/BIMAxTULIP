@@ -12,7 +12,7 @@ class FaqController extends Controller
     public function index()
     {
         $categories = FaqCategory::with('faqs')->get();
-        return view('Admin.admin-faq', compact('categories'));
+        return view('admin.admin-faq', compact('categories'));
     }
 
     public function storeCategory(Request $request)

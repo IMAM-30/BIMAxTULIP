@@ -15,6 +15,6 @@ class KontakController extends Controller
 
         $websitekontaks = WebsiteKontak::orderBy('order')->get();
 
-        return view('User.kontak', compact('kontaks', 'slides', 'websitekontaks'));
+        return view('user.kontak', compact('kontaks', 'slides', 'websitekontaks'));
     }
 }

@@ -13,12 +13,12 @@ class WebsiteKontakController extends Controller
     public function index()
     {
         $items = WebsiteKontak::orderBy('order')->paginate(20);
-        return view('Admin.websitekontak.index', compact('items'));
+        return view('admin.websitekontak.index', compact('items'));
     }
 
     public function create()
     {
-        return view('Admin.websitekontak.create');
+        return view('admin.websitekontak.create');
     }
 
     public function store(WebsiteKontakRequest $request)
@@ -41,7 +41,7 @@ class WebsiteKontakController extends Controller
 
     public function edit(WebsiteKontak $websitekontak)
     {
-        return view('Admin.websitekontak.edit', compact('websitekontak'));
+        return view('admin.websitekontak.edit', compact('websitekontak'));
     }
 
     public function update(WebsiteKontakRequest $request, WebsiteKontak $websitekontak)

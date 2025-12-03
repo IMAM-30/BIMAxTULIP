@@ -11,7 +11,7 @@ class FaqCategoryController extends Controller
     public function index()
     {
         $categories = FaqCategory::all();
-        return view('Admin.FaqCategory.index', compact('categories'));
+        return view('admin.FaqCategory.index', compact('categories'));
     }
 
     public function store(Request $request)

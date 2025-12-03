@@ -13,7 +13,7 @@ class AdminController extends Controller
         $slides = Slide::orderBy('date', 'desc')->get();
         $sections = Section::orderBy('id', 'asc')->get();
 
-        return view('Admin.admin-home', compact('slides', 'sections'));
+        return view('admin.admin-home', compact('slides', 'sections'));
     }
 
     public function storeSlide(Request $request)

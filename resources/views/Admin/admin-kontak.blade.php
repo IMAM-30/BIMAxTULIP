@@ -1,13 +1,10 @@
-{{--SECTION SECTION--}}
 <section class="admin-card">
     <h2>Kelola Section</h2>
 
-    {{-- Pesan sukses --}}
     @if(session('success'))
     <div class="alert alert-success">{{ session('success') }}</div>
     @endif
 
-    {{-- Form tambah section --}}
     <form action="{{ route('sections.store') }}" method="POST" enctype="multipart/form-data" class="add-form">
         @csrf
         <div class="form-row">
@@ -19,7 +16,6 @@
         </div>
     </form>
 
-    {{-- Tabel section --}}
     <table class="admin-table">
         <thead>
             <tr>
@@ -57,7 +53,6 @@
 </section>
 
 <script>
-// Fungsi edit Section
 function editRow(id) {
     const row = document.getElementById(`section-${id}`);
     const btn = row.querySelector('.btn-edit');
@@ -81,13 +76,11 @@ function editRow(id) {
         return;
     }
 
-    // Ambil data lama
     const oldTitle = title.textContent.trim();
     const oldSubtitle = subtitle.textContent.trim();
     const oldDesc = description.textContent.trim();
     const oldImg = image.querySelector('img') ? image.querySelector('img').src : '';
 
-    // Ubah ke input
     title.innerHTML = `<input type="text" value="${oldTitle}" class="form-input">`;
     subtitle.innerHTML = `<input type="text" value="${oldSubtitle}" class="form-input">`;
     description.innerHTML = `<textarea class="form-input">${oldDesc}</textarea>`;

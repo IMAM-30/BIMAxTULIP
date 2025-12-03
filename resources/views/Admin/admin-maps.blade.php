@@ -1,4 +1,4 @@
-@extends('Admin.admin-components.admin-layout')
+@extends('admin.admin-components.admin-layout')
 
 @section('content')
 <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
@@ -6,7 +6,6 @@
 <div class="admin-maps-container">
     <h2>Manajemen Data Titik Banjir</h2>
 
-    {{-- FORM TAMBAH / EDIT --}}
     <form id="mapForm" enctype="multipart/form-data">
         @csrf
         <input type="hidden" id="id" name="id">
@@ -64,15 +63,12 @@
         <div id="map" style="height:300px; margin:10px 0; border-radius:8px;"></div>
 
         <div class="button-container">
-            {{-- Tombol Simpan Baru --}}
             <button type="button" id="btnAdd" class="btn btn-success">Simpan Baru</button>
-            {{-- Tombol Edit --}}
             <button type="submit" id="btnSubmit" class="btn btn-primary" style="display:none;">Simpan Perubahan</button>
             <button type="button" id="btnCancel" class="btn btn-secondary" style="display:none;">Batal</button>
         </div>
     </form>
 
-    {{-- TABEL DATA --}}
     <h3 style="margin-top:30px;">Daftar Titik Banjir</h3>
     <table class="admin-table">
         <thead>

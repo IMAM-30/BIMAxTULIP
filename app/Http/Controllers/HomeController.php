@@ -16,7 +16,7 @@ class HomeController extends Controller
         $sections = Section::orderBy('id', 'asc')->get();
         $slides = Slide::orderBy('date', 'desc')->get();
         $kecamatans = \App\Models\Kecamatan::orderBy('order')->get();
-        return view('User.home', compact('sections', 'slides', 'kecamatans'));
+        return view('user.home', compact('sections', 'slides', 'kecamatans'));
     }
 
     public function data()
@@ -36,20 +36,20 @@ class HomeController extends Controller
 
         $monthlyStats = \App\Models\MonthlyStat::where('year', $year)->orderBy('month')->get();
 
-        return view('User.data', compact('slides', 'news', 'monthlyStats', 'availableYears', 'year'));
+        return view('user.data', compact('slides', 'news', 'monthlyStats', 'availableYears', 'year'));
     }
 
 
     public function maps()
     {
         $slides = Slide::all();
-        return view('User.maps', compact('slides'));
+        return view('user.maps', compact('slides'));
     }
 
     public function pelaporan()
     {
         $slides = Slide::all();
-        return view('User.pelaporan', compact('slides'));
+        return view('user.pelaporan', compact('slides'));
     }
 
     public function faq()
@@ -57,7 +57,7 @@ class HomeController extends Controller
         $slides = \App\Models\Slide::all();
         $categories = \App\Models\FaqCategory::with('faqs')->get();
 
-        return view('User.faq', compact('slides', 'categories'));
+        return view('user.faq', compact('slides', 'categories'));
     }
 
 
@@ -67,13 +67,13 @@ class HomeController extends Controller
         $kontaks = Kontak::orderBy('order')->get();
 
         $slides = \App\Models\Slide::all(); 
-        return view('User.kontak', compact('kontaks', 'slides'));
+        return view('user.kontak', compact('kontaks', 'slides'));
     }
     
     public function sistemcerdas()
     {
         $slides = Slide::all();
-        return view('User.sistemcerdas', compact('slides'));
+        return view('user.sistemcerdas', compact('slides'));
     }
 
     

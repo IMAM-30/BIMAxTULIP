@@ -12,12 +12,12 @@ class MonthlyStatController extends Controller
     public function index()
     {
         $items = MonthlyStat::orderBy('year','desc')->orderBy('month')->paginate(20);
-        return view('Admin.monthly_stats.index', compact('items'));
+        return view('admin.monthly_stats.index', compact('items'));
     }
 
     public function create()
     {
-        return view('Admin.monthly_stats.create');
+        return view('admin.monthly_stats.create');
     }
 
     public function store(MonthlyStatRequest $request)
@@ -28,7 +28,7 @@ class MonthlyStatController extends Controller
 
     public function edit(MonthlyStat $monthlyStat)
     {
-        return view('Admin.monthly_stats.edit', ['item' => $monthlyStat]);
+        return view('admin.monthly_stats.edit', ['item' => $monthlyStat]);
     }
 
     public function update(MonthlyStatRequest $request, MonthlyStat $monthlyStat)

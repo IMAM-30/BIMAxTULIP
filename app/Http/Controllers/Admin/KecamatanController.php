@@ -12,12 +12,12 @@ class KecamatanController extends Controller
     public function index()
     {
         $items = Kecamatan::orderBy('order')->paginate(20);
-        return view('Admin.kecamatans.index', compact('items'));
+        return view('admin.kecamatans.index', compact('items'));
     }
 
     public function create()
     {
-        return view('Admin.kecamatans.create');
+        return view('admin.kecamatans.create');
     }
 
     public function store(Request $request)
@@ -41,7 +41,7 @@ class KecamatanController extends Controller
 
     public function edit(Kecamatan $kecamatan)
     {
-        return view('Admin.kecamatans.edit', compact('kecamatan'));
+        return view('admin.kecamatans.edit', compact('kecamatan'));
     }
 
     public function update(Request $request, Kecamatan $kecamatan)

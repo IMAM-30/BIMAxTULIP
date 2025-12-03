@@ -17,11 +17,11 @@
     @yield('custom-css')
 </head>
 <body class="admin-body">
-    @include('Admin.admin-components.admin-navbar')
+    @include('admin.admin-components.admin-navbar')
 
     <main class="main-content">
         @yield('content')
-        @include('Admin.admin-components.admin-footer')
+        @include('admin.admin-components.admin-footer')
     </main>
 
     <script src="{{ asset('js/admin-navbar.js') }}"></script>

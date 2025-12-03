@@ -13,12 +13,12 @@ class NewsController extends Controller
     public function index()
     {
         $items = News::orderBy('order')->paginate(20);
-        return view('Admin.news.index', compact('items'));
+        return view('admin.news.index', compact('items'));
     }
 
     public function create()
     {
-        return view('Admin.news.create');
+        return view('admin.news.create');
     }
 
     public function store(NewsRequest $request)
@@ -35,7 +35,7 @@ class NewsController extends Controller
 
     public function edit(News $news)
     {
-        return view('Admin.news.edit', compact('news'));
+        return view('admin.news.edit', compact('news'));
     }
 
     public function update(NewsRequest $request, News $news)

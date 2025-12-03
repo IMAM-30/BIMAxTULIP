@@ -17,7 +17,7 @@ class LaporanController extends Controller
 
         $slides = Slide::all(); 
         
-        return view('User.pelaporan', [
+        return view('user.pelaporan', [
             'slides' => $slides
         ]);
     }
@@ -56,7 +56,7 @@ class LaporanController extends Controller
     public function index()
     {
         $semua_laporan = Laporan::orderBy('created_at', 'desc')->get();
-        return view('Admin.kelola_laporan', compact('semua_laporan'));
+        return view('admin.kelola_laporan', compact('semua_laporan'));
     }
 
     public function destroy($id)

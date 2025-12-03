@@ -12,7 +12,7 @@
     {{-- Hero Section --}}
     @include('components.hero', ['slides' => $slides])
 
-   @include('Components.kontak-section', ['kontaks' => $kontaks])
+   @include('components.kontak-section', ['kontaks' => $kontaks])
     
    @include('components.websitekontak-section', ['websitekontaks' => $websitekontaks])
 

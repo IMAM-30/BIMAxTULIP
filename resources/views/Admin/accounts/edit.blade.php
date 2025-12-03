@@ -1,4 +1,4 @@
-@extends('Admin.admin-components.admin-layout')
+@extends('admin.admin-components.admin-layout')
 
 @section('title', 'Edit Admin')
 
